@@ -11,7 +11,7 @@
     http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-    <context:component-scan base-package="upmc.darapp.controller" />
+    <context:component-scan base-package="upmc.darapp.controller.app" />
 
     <bean id="viewResolver"
         class="org.springframework.web.servlet.view.UrlBasedViewResolver">
@@ -19,6 +19,6 @@
             value="org.springframework.web.servlet.view.JstlView" />
         <property name="prefix" value="/WEB-INF/jsp/" />
         <property name="suffix" value=".jsp" />
-    </bean>
+    </bean>  
 
 </beans>
