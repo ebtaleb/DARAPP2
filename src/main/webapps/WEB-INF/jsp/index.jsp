@@ -1,13 +1,16 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 	<head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		<meta charset="utf-8">
+        <%@ page
+        language="java"
+        contentType="text/html; charset=UTF-8"
+        pageEncoding="UTF-8"
+        %>
 		<title>IDF Eventer</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link href="<c:url value="/resources/css/bootstrap.min.css"  />" rel="stylesheet">
-		<link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet">
+		<link href="<c:url value="/static/css/bootstrap.min.css"  />" rel="stylesheet">
+		<link href="<c:url value="/static/css/styles.css" />" rel="stylesheet">
 	</head>
 	<body>
 <!-- begin template -->
@@ -42,76 +45,61 @@
         </div>
     </div>
   	<div class="col-xs-6" id="right">
-    
+
       <h2>Nouveaux évenements</h2>
 
       <hr>
-      
+
       <!-- item list -->
       <div class="panel panel-default">
         <div class="panel-heading"><a href="">Item heading</a></div>
       </div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-        Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-        dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate.
+        Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis
+        dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan.
         Aliquam in felis sit amet augue.</p>
-      
+
       <hr>
-      
+
       <div class="panel panel-default">
         <div class="panel-heading"><a href="">Item heading</a></div>
       </div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-        Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-        dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate.
+        Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis
+        dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan.
         Aliquam in felis sit amet augue.</p>
-      
+
       <hr>
-      
+
       <div class="panel panel-default">
         <div class="panel-heading"><a href="">Item heading</a></div>
       </div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-        Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-        dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate.
+        Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis
+        dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan.
         Aliquam in felis sit amet augue.</p>
-      
+
       <hr>
-      
+
       <div class="panel panel-default">
         <div class="panel-heading"><a href="">Item heading</a></div>
       </div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-        Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-        dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate.
+        Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis
+        dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan.
         Aliquam in felis sit amet augue.</p>
-      
+
       <hr>
-      <!-- /item list -->
-      
-      <p>
-      <a href="http://www.bootply.com/render/129229">Demo</a> | <a href="http://bootply.com/129229">Source Code</a>
-      </p>
-      
-      <hr> 
-        
-      <p>
-      <a href="http://bootply.com" target="_ext" class="center-block btn btn-primary">More Bootstrap Snippets on Bootply</a>
-      </p>
-        
-      <hr>      
 
     </div>
     <div class="col-xs-4"><!--map-canvas will be postioned here--></div>
-    
+
   </div>
 </div>
-<!-- end template -->
 
-	<!-- script references -->
-		<script src="<c:url value="/resources/js/jquery-1.11.2.js />""></script>
-		<script src="<c:url value="/resources/js/bootstrap.min.js />""></script>
-		<script src="http://maps.googleapis.com/maps/api/js?sensor=false&extension=.js&output=embed"></script>
-		<script src="<c:url value="/resources/js/scripts.js />""></script>
+		<script src="<c:url value="/static/js/jquery-1.11.2.js" />"></script>
+		<script src="<c:url value="/static/js/bootstrap.min.js" />"></script>
+		<script src="http://maps.google.com/maps/api/js?sensor=false&output=embed"></script>
+		<script src="<c:url value="/static/js/scripts.js" />"></script>
 	</body>
 </html>
