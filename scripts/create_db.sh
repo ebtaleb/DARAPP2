@@ -22,8 +22,8 @@ fi
 while getopts ":c:d:" opt; do
     case "$opt" in
         c)
-            mysqladmin -uroot -pnyanyanya create $OPTARG
             db="$OPTARG"
+            init_db $db
             echo "database $db created"
             break
             ;;
@@ -42,9 +42,7 @@ done
 
 table="use $db; CREATE TABLE IF NOT EXISTS TRACKS (ID INT (5) NOT NULL AUTO_INCREMENT,TITLE VARCHAR (20) NOT NULL,SINGER VARCHAR (20) NOT NULL,PRIMARY KEY ( ID ));"
 
-user_table="use $db; CREATE TABLE IF NOT EXISTS USERS (ID INT (5) NOT NULL AUTO_INCREMENT,NAME VARCHAR (20) NOT NULL,PASSWORD VARCHAR (20) NOT NULL, EMAIL VARCHAR(60) NOT NULL, PRIMARY KEY ( ID ), UNIQUE (email));"
-
 mysql -hlocalhost -uroot -pnyanyanya -e "$table"
 echo "table TRACKS created"
-mysql -hlocalhost -uroot -pnyanyanya -e "$user_table"
+mysql -hlocalhost -uroot -pnyanyanya $db < "create_user.sql"
 echo "table USERS created"

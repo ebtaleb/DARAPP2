@@ -1,4 +1,4 @@
-package upmc.darapp.controller.api;
+package upmc.darapp.controller.api.controller;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +16,7 @@ import java.io.PrintWriter;
 import java.io.IOException;
 import java.util.List;
 
-import upmc.darapp.model.Track;
+import upmc.darapp.api.model.Track;
 
 @RestController
 @RequestMapping("/metallica")

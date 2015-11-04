@@ -23,7 +23,7 @@ import org.apache.tomcat.SimpleInstanceManager;
 
 public class ServerMain {
     private static final int PORT = 8080;
-    private static final String WAR_LOCATION = "src/main/webapps";
+    private static final String WAR_LOCATION = "src/main/webapp";
     private static final String CONTEXT_PATH = "/";
     private static final String MAPPING_URL = "/*";
 

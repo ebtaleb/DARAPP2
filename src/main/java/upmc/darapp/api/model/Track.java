@@ -1,4 +1,4 @@
-package upmc.darapp.model;
+package upmc.darapp.api.model;
 
 import java.io.Serializable;
 import java.util.Date;
