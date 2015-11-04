@@ -33,6 +33,11 @@ public class MainController {
 		return new ModelAndView("index");
 	}
 
+	@RequestMapping(value="/newevent", method=RequestMethod.GET)
+	public ModelAndView newEventPage() {
+		return new ModelAndView("event_registration_form");
+	}
+
 	@RequestMapping(value = "/admin**", method = RequestMethod.GET)
 	public ModelAndView adminPage() {
 
