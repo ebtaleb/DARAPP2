@@ -24,7 +24,7 @@
         <property name="dataSource" ref="dataSource" />
         <property name="annotatedClasses">
             <list>
-                <value>upmc.darapp.api.model.Track</value>
+                <value>upmc.darapp.api.model.Event</value>
                 <value>upmc.darapp.users.model.User</value>
                 <value>upmc.darapp.users.model.UserRole</value>
             </list>

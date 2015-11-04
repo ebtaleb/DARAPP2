@@ -35,6 +35,7 @@
 <div class="container-fluid" id="main">
   <div class="row">
     <div class="col-xs-2 sidebar-outer">
+       <hr>
        <div class="sidebar">
                 <ul>
                 <li><input type="checkbox" id="attractionbox" onclick="boxclick(this,'attraction')" /> Attractions</li>

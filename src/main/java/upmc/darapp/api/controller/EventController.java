@@ -1,4 +1,4 @@
-package upmc.darapp.controller.api.controller;
+package upmc.darapp.api.controller;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,11 +16,11 @@ import java.io.PrintWriter;
 import java.io.IOException;
 import java.util.List;
 
-import upmc.darapp.api.model.Track;
+import upmc.darapp.api.model.Event;
 
 @RestController
-@RequestMapping("/metallica")
-public class TrackController {
+@RequestMapping("/events")
+public class EventController {
 
     @Autowired
     SessionFactory sessionFactory;
@@ -28,13 +28,13 @@ public class TrackController {
     Session session = null;
 
     @RequestMapping(value = "/get", method = RequestMethod.GET)
-        public List<Track> getAllTracks() {
+        public List<Event> getAllEvents() {
 
             session = sessionFactory.openSession();
             session.beginTransaction();
-            Query query = session.createQuery("from Track");
+            Query query = session.createQuery("from Event");
 
-            List<Track> ts = query.list();
+            List<Event> ts = query.list();
 
             session.getTransaction().commit();
             session.close();
@@ -43,12 +43,12 @@ public class TrackController {
         }
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
-        public Track fetchBy(@PathVariable("id") int id) {
+        public Event fetchBy(@PathVariable("id") int id) {
 
             session = sessionFactory.openSession();
             session.beginTransaction();
-            Query query = session.createQuery("from Track where ID=" + id);
-            Track found = (Track) query.uniqueResult();;
+            Query query = session.createQuery("from Event where id=" + id);
+            Event found = (Event) query.uniqueResult();
 
             session.getTransaction().commit();
             session.close();
@@ -57,13 +57,13 @@ public class TrackController {
         }
 
     @RequestMapping(value = "/post", method = RequestMethod.POST)
-        public void createTrack(@RequestBody Track track, HttpServletResponse response) throws IOException {
+        public void createEvent(@RequestBody Event event, HttpServletResponse response) throws IOException {
 
             session = sessionFactory.openSession();
             session.beginTransaction();
 
-            String result = "Track saved : " + track;
-            session.save(track);
+            String result = "Event saved : " + event;
+            session.save(event);
 
             session.getTransaction().commit();
             session.close();
@@ -72,13 +72,11 @@ public class TrackController {
         }
 
     @RequestMapping(value = "/put", method = RequestMethod.PUT)
-        public void update(@RequestBody Track track, HttpServletResponse response) {
-            // update notification
+        public void updateEvent(@RequestBody Event event, HttpServletResponse response) {
         }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-        public void deleteTrack(@PathVariable("id") int id, HttpServletResponse response) {
-            // deleting notification
+        public void deleteEvent(@PathVariable("id") int id, HttpServletResponse response) {
         }
 
 }

@@ -1,12 +1,18 @@
 all:
-	scripts/db_manager.sh -c TEST
+	cd scripts && ./db_manager.sh -c TEST && cd ..
 	mvn clean compile exec:java
 
 run:
 	mvn clean compile exec:java
 
-.PHONY: clean
+db:
+	cd scripts && ./db_manager.sh -c TEST && cd ..
 
-clean:
+cleandb:
+	cd ./scripts && ./db_manager.sh -d TEST && cd ..
+
+.PHONY: cleanall
+
+cleanall:
 	mvn clean
-	scripts/db_manager.sh -d TEST
+	cd scripts && ./db_manager.sh -d TEST && cd ..

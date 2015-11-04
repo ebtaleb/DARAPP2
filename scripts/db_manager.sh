@@ -50,11 +50,20 @@ else
   echo "table TRACKS created"
 fi
 
-mysql -hlocalhost -uroot -pnyanyanya $db < "./scripts/create_user.sql"
+mysql -hlocalhost -uroot -pnyanyanya $db < "create_user.sql"
 
 if [ "$?" -ne "0" ]; then
   echo "Sorry, table USERS could not be created"
   exit 1
 else
   echo "table USERS created"
+fi
+
+mysql -hlocalhost -uroot -pnyanyanya $db < "events.sql"
+
+if [ "$?" -ne "0" ]; then
+  echo "Sorry, table EVENTS could not be created"
+  exit 1
+else
+  echo "table EVENTS created"
 fi
