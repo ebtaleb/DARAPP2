@@ -43,6 +43,18 @@ done
 table="use $db; CREATE TABLE IF NOT EXISTS TRACKS (ID INT (5) NOT NULL AUTO_INCREMENT,TITLE VARCHAR (20) NOT NULL,SINGER VARCHAR (20) NOT NULL,PRIMARY KEY ( ID ));"
 
 mysql -hlocalhost -uroot -pnyanyanya -e "$table"
-echo "table TRACKS created"
-mysql -hlocalhost -uroot -pnyanyanya $db < "create_user.sql"
-echo "table USERS created"
+if [ "$?" -ne "0" ]; then
+  echo "Sorry, table TRACKS could not be created"
+  exit 1
+else
+  echo "table TRACKS created"
+fi
+
+mysql -hlocalhost -uroot -pnyanyanya $db < "./scripts/create_user.sql"
+
+if [ "$?" -ne "0" ]; then
+  echo "Sorry, table USERS could not be created"
+  exit 1
+else
+  echo "table USERS created"
+fi
