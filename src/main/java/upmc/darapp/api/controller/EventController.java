@@ -47,7 +47,8 @@ public class EventController {
 
             session = sessionFactory.openSession();
             session.beginTransaction();
-            Query query = session.createQuery("from Event where id=" + id);
+            Query query = session.createQuery("from Event where id = :id");
+            query.setParameter("id", id);
             Event found = (Event) query.uniqueResult();
 
             session.getTransaction().commit();
