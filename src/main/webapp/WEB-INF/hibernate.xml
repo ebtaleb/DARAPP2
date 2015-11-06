@@ -41,6 +41,10 @@
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
 
+    <bean id="eventDAO" class="upmc.darapp.api.dao.EventDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
     <bean id="userDetailsService"
         class="upmc.darapp.users.service.MyUserDetailsService">
         <property name="userDAO" ref="userDAO" />

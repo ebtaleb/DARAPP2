@@ -12,28 +12,51 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import upmc.darapp.api.dao.EventDAO;
+import upmc.darapp.api.model.Event;
 
 @Controller
 public class MainController {
 
+    @Autowired
+    EventDAO eventDAO;
+
 	@RequestMapping(value = { "/", "/home**" }, method = RequestMethod.GET)
-	public ModelAndView homePage() {
+	public ModelAndView home() {
 		return new ModelAndView("home");
 	}
 
 	@RequestMapping(value="/main", method=RequestMethod.GET)
-	public ModelAndView mainPage() {
+	public ModelAndView main() {
 		return new ModelAndView("main");
 	}
 
 	@RequestMapping(value="/newevent", method=RequestMethod.GET)
-	public ModelAndView newEventPage() {
+	public ModelAndView newEvent() {
 		return new ModelAndView("event_registration_form");
 	}
 
+    @RequestMapping(value = "/events/{id}", method = RequestMethod.GET)
+	public ModelAndView event(@PathVariable("id") int id) {
+		ModelAndView model = new ModelAndView();
+        Event e = eventDAO.get(id);
+		model.addObject("name", e.getName());
+		model.addObject("desc", e.getDescr());
+		model.addObject("addr", e.getAddress());
+		model.addObject("lat", e.getLat());
+		model.addObject("lng", e.getLng());
+		model.setViewName("single_event");
+
+		return model;
+	}
+
 	@RequestMapping(value = "/admin**", method = RequestMethod.GET)
-	public ModelAndView adminPage() {
+	public ModelAndView admin() {
 
 		ModelAndView model = new ModelAndView();
 		model.addObject("title", "Spring Security + Hibernate Example");
@@ -41,7 +64,6 @@ public class MainController {
 		model.setViewName("admin");
 
 		return model;
-
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -96,7 +118,6 @@ public class MainController {
 
 		model.setViewName("403");
 		return model;
-
 	}
 
 }

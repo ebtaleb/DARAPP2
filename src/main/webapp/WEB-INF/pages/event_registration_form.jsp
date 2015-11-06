@@ -13,9 +13,9 @@
         <link href="<c:url value="/static/css/styles.css" />" rel="stylesheet">
     </head>
     <body>
-        <!-- begin template -->
+
         <div class="navbar navbar-custom navbar-fixed-top">
-            <div class="navbar-header"><a class="navbar-brand" href="#">IDF Eventer</a>
+            <div class="navbar-header"><a class="navbar-brand">IDF Eventer</a>
                 <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -24,11 +24,15 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Accueil</a></li>
-                    <li><a href="/app/newevent">Créer nouveau évènement</a></li>
-                    <li><a href="#">Mes évènements</a></li>
-                    <li>&nbsp;</li>
+                    <li class="active"><a href="<c:url value='/app/main' />">Accueil</a></li>
+                    <li><a href="<c:url value='/app/newevent' />">Créer nouveau évènement</a></li>
+                    <li><a href="<c:url value='/app/myevents' />">Mes évènements</a></li>
+                    <li class="navbar-right"></li>
                 </ul>
+                <div class="navbar-right">
+                    <a class="navbar-brand">Vous êtes connecté en tant que <c:if test="${pageContext.request.userPrincipal.name != null}"><strong>${pageContext.request.userPrincipal.name}</strong></c:if></a>
+                    <a class="navbar-brand" href="javascript:formSubmit()"> Logout</a>
+                </div>
             </div>
         </div>
 

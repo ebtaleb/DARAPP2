@@ -20,9 +20,9 @@
                                  value="${_csrf.token}" />
         </form>
         <script>
-                                 function formSubmit() {
-                                 document.getElementById("logoutForm").submit();
-                                 }
+            function formSubmit() {
+                document.getElementById("logoutForm").submit();
+            }
         </script>
 
         <div class="navbar navbar-custom navbar-fixed-top">
@@ -35,7 +35,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="">Accueil</a></li>
+                    <li class="active"><a href="<c:url value='/app/main' />">Accueil</a></li>
                     <li><a href="<c:url value='/app/newevent' />">Créer nouveau évènement</a></li>
                     <li><a href="<c:url value='/app/myevents' />">Mes évènements</a></li>
                     <li class="navbar-right"></li>
@@ -45,8 +45,6 @@
                     <a class="navbar-brand" href="javascript:formSubmit()"> Logout</a>
                 </div>
             </div>
-
-
         </div>
 
         <div id="map-canvas"></div>
@@ -65,30 +63,11 @@
                 </div>
                 <div class="col-xs-6" id="right">
 
-                    <h2>Nouveaux évenements</h2>
+                    <h2>Nouveaux évènements</h2>
 
                     <hr>
 
                     <div class="event-list">
-
-                        <div class="event">
-
-                            <div class="panel panel-default">
-                                <div class="panel-heading"><a href="">Item heading</a></div>
-                            </div>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate.
-                            Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis
-                            dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan.
-                            Aliquam in felis sit amet augue.</p>
-
-                            <div id="followButton">
-                                <button id="1" name="follow" class="btn btn-default followUser">Follow</button>
-                            </div>
-                        </div>
-
-                        <hr>
-
                     </div>
 
                 </div>
@@ -103,5 +82,6 @@
         <script src="http://maps.google.com/maps/api/js?sensor=false&output=embed"></script>
         <script src="<c:url value="/static/js/scripts.js" />"></script>
         <script src="<c:url value="/static/js/follow.js" />"></script>
+        <script src="<c:url value="/static/js/events.js" />"></script>
     </body>
 </html>

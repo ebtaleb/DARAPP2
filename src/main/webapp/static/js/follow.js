@@ -1,17 +1,17 @@
 $('body').on('click', 'button.followUser', function() {
         var userid = $(this).attr("id");
 
-        $("#followButton").fadeOut(300);
-        $("#followButton").html('<button id="' +userid + '" name="unfollow" class="btn btn-info unfollowUser">Following</button>');
-        $("#followButton").fadeIn(300);
+        $(this).fadeOut(300);
+        $(this).parent().html('<button id="' +userid + '" name="unfollow" class="btn btn-info unfollowUser">Following</button>');
+        $(this).fadeIn(300);
 });
 
 $('body').on('click', 'button.unfollowUser', function() {
         var userid = $(this).attr("id");
 
-        $("#followButton").fadeOut(300);
-        $("#followButton").html('<button id="' +userid + '" name="follow" class="btn btn-default followUser">Follow</button>');
-        $("#followButton").fadeIn(300);
+        $(this).fadeOut(300);
+        $(this).parent().html('<button id="' +userid + '" name="follow" class="btn btn-default followUser">Follow</button>');
+        $(this).fadeIn(300);
 });
 
 $('body').on('mouseenter', 'button.unfollowUser', function() {

@@ -9,6 +9,7 @@
         <http auto-config="true" use-expressions="true">
             <intercept-url pattern="/app/admin**" access="hasRole('ROLE_ADMIN')" />
             <intercept-url pattern="/app/main**" access="hasRole('ROLE_USER')" />
+            <intercept-url pattern="/app/events**" access="hasRole('ROLE_USER')" />
             <access-denied-handler error-page="/app/403" />
             <form-login
                 login-page="/app/login"
