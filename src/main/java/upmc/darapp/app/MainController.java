@@ -22,18 +22,9 @@ public class MainController {
 		return new ModelAndView("home");
 	}
 
-	@RequestMapping(value = { "/hello**" }, method = RequestMethod.GET)
-	public ModelAndView defaultPage() {
-		ModelAndView model = new ModelAndView();
-		model.addObject("title", "Spring Security + Hibernate Example");
-		model.addObject("message", "This is default page!");
-		model.setViewName("hello");
-		return model;
-	}
-
 	@RequestMapping(value="/main", method=RequestMethod.GET)
 	public ModelAndView mainPage() {
-		return new ModelAndView("index");
+		return new ModelAndView("main");
 	}
 
 	@RequestMapping(value="/newevent", method=RequestMethod.GET)
@@ -68,7 +59,6 @@ public class MainController {
 		model.setViewName("login");
 
 		return model;
-
 	}
 
 	// customize the error message

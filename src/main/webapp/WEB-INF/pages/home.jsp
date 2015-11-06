@@ -32,12 +32,12 @@
             <div class="row">
                 <div class="col-xs-6 col-md-6">
                     <h3 style="text-align:center;">Se connecter</h3>
-                    <form action="" method="POST" autocomplete="off" style="text-align:center;">
+                    <form action="<c:url value='/login' />" method="POST" autocomplete="off" style="text-align:center;">
                         <div class="form-group">
-                            <input id="short" name="" placeholder="Identifiant" type="text">
+                            <input id="short" name="username" placeholder="Identifiant" type="text">
                         </div>
                         <div class="form-group">
-                            <input id="short" name="" placeholder="Mot de passe" type="password">
+                            <input id="short" name="password" placeholder="Mot de passe" type="password">
                         </div>
                         <div class="form-group">
                             <button type="submit" name="login" class="btn btn-primary">Login</button>
@@ -50,7 +50,7 @@
 
                     <form class="form-horizontal" role="form" action="" method="POST" autocomplete="off" style="text-align:center;">
 
-                        <form action="" method="POST" autocomplete="off">
+                        <form action="<c:url value='/register' />" method="POST" autocomplete="off">
 
                             <div class="form-group">
                                 <input id="short" name="" placeholder="Identifiant" type="text">
