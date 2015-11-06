@@ -17,15 +17,18 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MainController {
 
-	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
-	public ModelAndView defaultPage() {
+	@RequestMapping(value = { "/", "/home**" }, method = RequestMethod.GET)
+	public ModelAndView homePage() {
+		return new ModelAndView("home");
+	}
 
+	@RequestMapping(value = { "/hello**" }, method = RequestMethod.GET)
+	public ModelAndView defaultPage() {
 		ModelAndView model = new ModelAndView();
 		model.addObject("title", "Spring Security + Hibernate Example");
 		model.addObject("message", "This is default page!");
 		model.setViewName("hello");
 		return model;
-
 	}
 
 	@RequestMapping(value="/main", method=RequestMethod.GET)

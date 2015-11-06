@@ -26,6 +26,12 @@ ul
         position: absolute;
 }
 
+.jumbotron {
+    height:100%;
+    background-image: url(../img/paris.jpg);
+    background-size: cover;
+}
+
 .navbar-custom .icon-bar {
 	background-color:#fff;
 }
