@@ -42,7 +42,7 @@ public class MyUserDetailsService implements UserDetailsService {
 	// Converts upmc.darapp.users.model.User user to
 	// org.springframework.security.core.userdetails.User
 	private User buildUserForAuthentication(upmc.darapp.users.model.User user, List<GrantedAuthority> authorities) {
-		return new User(user.getUsername(), user.getPassword(), user.isEnabled(), true, true, true, authorities);
+		return new User(user.getUsername(), user.getPassword(), true, true, true, true, authorities);
 	}
 
 	private List<GrantedAuthority> buildUserAuthority(Set<UserRole> userRoles) {

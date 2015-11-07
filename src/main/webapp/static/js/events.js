@@ -23,7 +23,7 @@ var createEventItem = function(item) {
     panelheading.className = "panel-heading";
 
     newlink = document.createElement("a");
-    newlink.setAttribute("href", "events/"+item.id);
+    newlink.setAttribute("href", "event/"+item.id);
     newlink.innerHTML = item.name;
 
     p_desc = document.createElement("p");
@@ -44,7 +44,7 @@ var createEventItem = function(item) {
 }
 
 $(document).ready(function () {
-    $.getJSON("../api/events/get")
+    $.getJSON("../../api/events/get")
         .done(function (data) {
             $.each(data, function (key, item) {
                 $(".event-list").append(createEventItem(item));

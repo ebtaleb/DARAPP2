@@ -1,7 +1,6 @@
 CREATE TABLE IF NOT EXISTS users (
   username VARCHAR(45) NOT NULL ,
   password VARCHAR(45) NOT NULL ,
-  enabled TINYINT NOT NULL DEFAULT 1 ,
   PRIMARY KEY (username));
 
 CREATE TABLE IF NOT EXISTS user_roles (
@@ -13,8 +12,8 @@ CREATE TABLE IF NOT EXISTS user_roles (
   KEY fk_username_idx (username),
   CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES users (username));
 
-INSERT INTO users(username,password,enabled) VALUES ('mkyong','123456', true);
-INSERT INTO users(username,password,enabled) VALUES ('alex','123456', true);
+INSERT INTO users(username,password) VALUES ('mkyong','123456');
+INSERT INTO users(username,password) VALUES ('alex','123456');
 
 INSERT INTO user_roles (username, role) VALUES ('mkyong', 'ROLE_USER');
 INSERT INTO user_roles (username, role) VALUES ('mkyong', 'ROLE_ADMIN');

@@ -17,11 +17,11 @@
                 authentication-failure-url="/app/login?error"
                 username-parameter="username"
                 password-parameter="password" />
-            <logout logout-success-url="/app/"  />
+            <logout logout-success-url="/app/home"  />
             <csrf disabled="true"/>
         </http>
 
-    <authentication-manager>
+    <authentication-manager alias="authenticationManager">
         <authentication-provider user-service-ref="userDetailsService">
             <password-encoder hash="plaintext"> </password-encoder>
         </authentication-provider>

@@ -2,12 +2,17 @@ package upmc.darapp.users.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Repository;
+import org.hibernate.Session;
 
 import upmc.darapp.users.model.User;
+import upmc.darapp.users.model.UserRole;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
@@ -34,7 +39,22 @@ public class UserDAOImpl implements UserDAO {
 		} else {
 			return null;
 		}
-
 	}
+
+    @Transactional
+    public void createNewUserRole(User u)
+    {
+        Session session = sessionFactory.getCurrentSession();
+        session.save(new UserRole(u, "ROLE_USER"));
+        session.flush();
+    }
+
+    @Transactional
+    public void createNewUser(User u)
+    {
+        Session session = sessionFactory.getCurrentSession();
+        session.save(u);
+        session.flush();
+    }
 
 }

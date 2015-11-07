@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -32,7 +33,7 @@
             <div class="row">
                 <div class="col-xs-6 col-md-6">
                     <h3 style="text-align:center;">Se connecter</h3>
-                    <form action="<c:url value='/login' />" method="POST" autocomplete="off" style="text-align:center;">
+                    <form action="<c:url value='/login' />" method="POST" style="text-align:center;">
                         <div class="form-group">
                             <input id="short" name="username" placeholder="Identifiant" type="text">
                         </div>
@@ -48,28 +49,21 @@
                 <div class="col-xs-6 col-md-6">
                     <h3 style="text-align:center;">S'inscrire</h3>
 
-                    <form class="form-horizontal" role="form" action="" method="POST" autocomplete="off" style="text-align:center;">
-
-                        <form action="<c:url value='/register' />" method="POST" autocomplete="off">
+                    <form:form modelAttribute="user" action="user/register" method="POST" style="text-align:center;" >
 
                             <div class="form-group">
-                                <input id="short" name="" placeholder="Identifiant" type="text">
+                                <form:input path="username" id="short" type="text" placeholder="Identifiant"/>
                             </div>
 
                             <div class="form-group">
-                                <input id="short" name="" placeholder="Mot de passe" type="password">
-                            </div>
-
-                            <div class="form-group">
-                                <input id="short" name="email" placeholder="Email" type="text">
+                                <form:input path="password" id="short" type="password" placeholder="Mot de passe"/>
                             </div>
 
                             <div class="form-group">
                                 <button type="submit" name="register" class="btn btn-success">Créer compte</button>
                             </div>
 
-                        </form>
-                    </form>
+                   </form:form>
                 </div>
             </div>
 
