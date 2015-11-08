@@ -83,7 +83,7 @@
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
-                            <button type="submit" class="btn btn-default">Soumettre</button>
+                            <button type="button" class="btn btn-default send-event">Soumettre</button>
                         </div>
                     </div>
                 </div>
@@ -93,5 +93,8 @@
 
         <script src="<c:url value="/static/js/jquery-1.11.2.js" />"></script>
         <script src="<c:url value="/static/js/bootstrap.min.js" />"></script>
+        <script src="<c:url value="/static/js/noty/packaged/jquery.noty.packaged.min.js" />"></script>
+        <script src="http://maps.google.com/maps/api/js?sensor=false&output=embed"></script>
+        <script src="<c:url value="/static/js/event_registration.js" />"></script>
     </body>
 </html>

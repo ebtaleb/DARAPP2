@@ -43,7 +43,7 @@ public class MainController {
     @Autowired
     AuthenticationManager authenticationManager;
 
-	@RequestMapping(value = "/home**", method = RequestMethod.GET)
+	@RequestMapping(value = {"/home**", method = RequestMethod.GET)
 	public ModelAndView home() {
 		return new ModelAndView("home");
 	}

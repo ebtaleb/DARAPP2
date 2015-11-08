@@ -4,12 +4,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.PrintWriter;
-import java.io.IOException;
+import org.json.JSONObject;
 import java.util.List;
 
 import upmc.darapp.api.dao.EventDAO;
@@ -33,11 +33,14 @@ public class APIController {
         }
 
     @RequestMapping(value = "/post", method = RequestMethod.POST)
-        public void createEvent(@RequestBody Event event, HttpServletResponse response) throws IOException {
+        public @ResponseBody String createEvent(@RequestBody Event event) {
             eventDAO.add(event);
-            String result = "Event saved : " + event;
-            PrintWriter out = response.getWriter();
-            out.println(result);
+            List<Event> l = eventDAO.getAll();
+            Event last = l.get(l.size() - 1);
+            JSONObject json = new JSONObject();
+            json.put("created", "success");
+            json.put("id", last.getId());
+            return json.toString();
         }
 
     @RequestMapping(value = "/put", method = RequestMethod.PUT)
