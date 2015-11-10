@@ -53,12 +53,6 @@
                 <div class="col-xs-2 sidebar-outer">
                     <hr>
                     <div class="sidebar">
-                        <ul>
-                            <li><input type="checkbox" id="attractionbox" onclick="boxclick(this,'attraction')" /> Attractions</li>
-                            <li><input type="checkbox" id="foodbox" onclick="boxclick(this,'food')" /> Food and Drink</li>
-                            <li><input type="checkbox" id="hotelbox" onclick="boxclick(this,'hotel')" /> Hotels</li>
-                            <li><input type="checkbox" id="citybox" onclick="boxclick(this,'city')" /> Towns/Cities</li>
-                        </ul>
                     </div>
                 </div>
                 <div class="col-xs-6" id="right">

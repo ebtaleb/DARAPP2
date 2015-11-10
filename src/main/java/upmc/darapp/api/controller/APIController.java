@@ -11,9 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.servlet.http.HttpServletResponse;
 import org.json.JSONObject;
 import java.util.List;
+import java.util.ArrayList;
 
 import upmc.darapp.api.dao.EventDAO;
 import upmc.darapp.api.model.Event;
+import upmc.darapp.users.dao.UserDAO;
+import upmc.darapp.users.model.User;
 
 @RestController
 @RequestMapping("/events")
@@ -22,9 +25,23 @@ public class APIController {
     @Autowired
     private EventDAO eventDAO;
 
+    @Autowired
+    private UserDAO userDAO;
+
     @RequestMapping(value = "/get", method = RequestMethod.GET)
         public List<Event> getAllEvents() {
             return eventDAO.getAll();
+        }
+
+    @RequestMapping(value = "/user_owned_events/{username}/get", method = RequestMethod.GET)
+        public List<Event> getUserOwnedEvents(@PathVariable("username") String un) {
+            List<Event> found = new ArrayList<Event>();
+            if (userDAO.findByUserName(un) != null) {
+                found = eventDAO.findUserOwnedEvents(un);
+            } else {
+
+            }
+            return found;
         }
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)

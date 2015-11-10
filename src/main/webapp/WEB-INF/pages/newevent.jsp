@@ -11,6 +11,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link href="<c:url value="/static/css/bootstrap.min.css"  />" rel="stylesheet">
         <link href="<c:url value="/static/css/styles.css" />" rel="stylesheet">
+        <link href="<c:url value="/static/css/jquery-ui.css" />" rel="stylesheet">
+        <link href="<c:url value="/static/css/jquery.timeentry.css" />" rel="stylesheet">
     </head>
     <body>
 
@@ -73,10 +75,25 @@
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
+                            <label for="date">Date </label>
+                            <input type="text" class="form-control" id="datepicker">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <label for="time">Heure </label>
+                            <input type="text" class="form-control" id="timepicker">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group">
                             <li> <label for="eventtype">Type d'évenement </label>
                                 <ul>
-                                    <li><label for="rando">Randonnée</label> <input type="radio" name="eventtype" value=""></li>
-                                    <li><label for="velo">Cyclisme</label> <input type="radio" name="eventtype" value=""></li>
+                                    <li><label for="rando">Randonnée</label> <input type="radio" name="eventtype" value="r"></li>
+                                    <li><label for="velo">Cyclisme</label> <input type="radio" name="eventtype" value="v"></li>
                                 </ul>
                             </li>
                         </div>
@@ -95,6 +112,9 @@
         <script src="<c:url value="/static/js/bootstrap.min.js" />"></script>
         <script src="<c:url value="/static/js/noty/packaged/jquery.noty.packaged.min.js" />"></script>
         <script src="http://maps.google.com/maps/api/js?sensor=false&output=embed"></script>
+        <script src="<c:url value="/static/js/jquery-ui.js" />"></script>
+        <script src="<c:url value="/static/js/jquery.plugin.js" />"></script>
+        <script src="<c:url value="/static/js/jquery.timeentry.js" />"></script>
         <script src="<c:url value="/static/js/event_registration.js" />"></script>
     </body>
 </html>

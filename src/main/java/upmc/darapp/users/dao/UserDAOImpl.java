@@ -25,6 +25,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
 	@SuppressWarnings("unchecked")
+    @Transactional
 	public User findByUserName(String username) {
 
 		List<User> users = new ArrayList<User>();

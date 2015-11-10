@@ -24,7 +24,7 @@ var createEventItem = function(item) {
 
     newlink = document.createElement("a");
     newlink.setAttribute("href", "event/"+item.id);
-    newlink.innerHTML = item.name;
+    newlink.innerHTML = item.title;
 
     p_desc = document.createElement("p");
     p_desc.innerHTML = item.descr;

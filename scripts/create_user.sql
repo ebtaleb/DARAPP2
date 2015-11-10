@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS users (
-  username VARCHAR(45) NOT NULL ,
-  password VARCHAR(45) NOT NULL ,
+  username VARCHAR(45) NOT NULL,
+  password VARCHAR(45) NOT NULL,
   PRIMARY KEY (username));
 
 CREATE TABLE IF NOT EXISTS user_roles (

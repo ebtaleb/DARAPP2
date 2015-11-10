@@ -14,17 +14,26 @@ public class Event implements Serializable {
     @Column(name = "id")
     private int id;
 
-	@Column(name = "name")
-	private String name;
+	@Column(name = "owner")
+	private String owner;
+
+	@Column(name = "title")
+	private String title;
 
 	@Column(name = "descr")
 	private String descr;
 
+	@Column(name = "event_type")
+	private String event_type;
+
 	@Column(name = "address")
 	private String address;
 
-    @Column(name = "ev_date")
-    private java.sql.Date ev_date;
+    @Column(name = "start_date")
+    private java.sql.Date start_date;
+
+    @Column(name = "start_time")
+    private java.sql.Time start_time;
 
 	@Column(name = "lat")
 	private double lat;
@@ -40,12 +49,20 @@ public class Event implements Serializable {
 		this.id = i;
 	}
 
-	public String getName() {
-		return name;
+	public String getOwner() {
+		return owner;
 	}
 
-	public void setName(String n) {
-		this.name = n;
+	public void setOwner(String o) {
+		this.owner = o;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String n) {
+		this.title = n;
 	}
 
 	public String getDescr() {
@@ -54,6 +71,14 @@ public class Event implements Serializable {
 
 	public void setDescr(String descr) {
 		this.descr = descr;
+	}
+
+	public String getEvent_type() {
+		return event_type;
+	}
+
+	public void setEvent_type(String et) {
+		this.event_type = et;
 	}
 
 	public String getAddress() {
@@ -65,13 +90,23 @@ public class Event implements Serializable {
 	}
 
     @Type(type="date")
-    public java.sql.Date getEv_date() {
-        return ev_date;
+    public java.sql.Date getStart_date() {
+        return start_date;
     }
 
     @Type(type="date")
-    public void setEv_date(java.sql.Date ev_d) {
-        this.ev_date = ev_d;
+    public void setStart_date(java.sql.Date sd) {
+        this.start_date = sd;
+    }
+
+    @Type(type="time")
+    public java.sql.Time getStart_time() {
+        return start_time;
+    }
+
+    @Type(type="time")
+    public void setStart_time(java.sql.Time st) {
+        this.start_time = st;
     }
 
 	public double getLat() {

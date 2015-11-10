@@ -43,7 +43,7 @@ public class MainController {
     @Autowired
     AuthenticationManager authenticationManager;
 
-	@RequestMapping(value = {"/home**", method = RequestMethod.GET)
+	@RequestMapping(value = "/home**", method = RequestMethod.GET)
 	public ModelAndView home() {
 		return new ModelAndView("home");
 	}
@@ -154,7 +154,7 @@ public class MainController {
     @RequestMapping(value = "/event/{id}", method = RequestMethod.GET)
 	public String event(@PathVariable("id") int id, ModelMap model) {
         Event e = eventDAO.get(id);
-		model.addAttribute("name", e.getName());
+		model.addAttribute("name", e.getTitle());
 		model.addAttribute("desc", e.getDescr());
 		model.addAttribute("addr", e.getAddress());
 		model.addAttribute("lat", e.getLat());

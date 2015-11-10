@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Repository;
 
 import upmc.darapp.api.model.Event;
@@ -26,6 +27,19 @@ public class EventDAOImpl implements EventDAO {
         session = sessionFactory.openSession();
         session.beginTransaction();
         Query query = session.createQuery("from Event");
+
+        List<Event> ts = query.list();
+
+        session.getTransaction().commit();
+        session.close();
+
+        return ts;
+    }
+
+    public List<Event> findUserOwnedEvents(String u) {
+        session = sessionFactory.openSession();
+        session.beginTransaction();
+        Query query = session.createQuery("select event from Event event, User user where event.owner = user.username");
 
         List<Event> ts = query.list();
 
