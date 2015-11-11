@@ -154,9 +154,12 @@ public class MainController {
     @RequestMapping(value = "/event/{id}", method = RequestMethod.GET)
 	public String event(@PathVariable("id") int id, ModelMap model) {
         Event e = eventDAO.get(id);
-		model.addAttribute("name", e.getTitle());
+		model.addAttribute("title", e.getTitle());
 		model.addAttribute("desc", e.getDescr());
 		model.addAttribute("addr", e.getAddress());
+		model.addAttribute("date", e.getStart_date().toString());
+		model.addAttribute("time", e.getStart_time().toString());
+		model.addAttribute("path", e.getPath());
 		model.addAttribute("lat", e.getLat());
 		model.addAttribute("lng", e.getLng());
 

@@ -60,20 +60,29 @@
                     <hr>
 
                     <div class="event">
-		                <c:if test="${not empty name}">
-			                <div class="n">${name}</div>
+		                <c:if test="${not empty title}">
+			                <div class="title">${title}</div>
 		                </c:if>
 		                <c:if test="${not empty desc}">
-			                <div class="d">${desc}</div>
+			                <div class="desc">${desc}</div>
 		                </c:if>
 		                <c:if test="${not empty addr}">
-			                <div class="a">${addr}</div>
+			                <div class="addr">${addr}</div>
+		                </c:if>
+		                <c:if test="${not empty date}">
+			                <div class="date">${date}</div>
+		                </c:if>
+		                <c:if test="${not empty time}">
+			                <div class="time">${time}</div>
 		                </c:if>
 		                <c:if test="${not empty lat}">
 			                <div hidden class="lat">${lat}</div>
 		                </c:if>
 		                <c:if test="${not empty lng}">
 			                <div hidden class="lng">${lng}</div>
+		                </c:if>
+		                <c:if test="${not empty path}">
+			                <div hidden class="path">${path}</div>
 		                </c:if>
                     </div>
 
@@ -88,7 +97,8 @@
 
         <script src="<c:url value="/static/js/jquery-1.11.2.js" />"></script>
         <script src="<c:url value="/static/js/bootstrap.min.js" />"></script>
-        <script src="http://maps.google.com/maps/api/js?sensor=false&output=embed"></script>
+        <script src="http://maps.google.com/maps/api/js?libraries=geometry&output=embed"></script>
+        <script src="<c:url value="/static/js/gmp.js" />"></script>
         <script src="<c:url value="/static/js/single_event_map.js" />"></script>
     </body>
 </html>

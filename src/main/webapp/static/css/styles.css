@@ -86,3 +86,8 @@ ul
     bottom:0;
     overflow:hidden;
 }
+
+#map {
+height: 100%;
+margin: 0px;
+}

@@ -29,10 +29,16 @@ public class Event implements Serializable {
 	@Column(name = "address")
 	private String address;
 
+	@Column(name = "path")
+    @Type(type="text")
+	private String path;
+
     @Column(name = "start_date")
+    @Type(type="date")
     private java.sql.Date start_date;
 
     @Column(name = "start_time")
+    @Type(type="time")
     private java.sql.Time start_time;
 
 	@Column(name = "lat")
@@ -89,22 +95,26 @@ public class Event implements Serializable {
 		this.address = a;
 	}
 
-    @Type(type="date")
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String p) {
+		this.path = p;
+	}
+
     public java.sql.Date getStart_date() {
         return start_date;
     }
 
-    @Type(type="date")
     public void setStart_date(java.sql.Date sd) {
         this.start_date = sd;
     }
 
-    @Type(type="time")
     public java.sql.Time getStart_time() {
         return start_time;
     }
 
-    @Type(type="time")
     public void setStart_time(java.sql.Time st) {
         this.start_time = st;
     }

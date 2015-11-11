@@ -4,25 +4,22 @@ function geocodeAddress(address, callback) {
         if (status == google.maps.GeocoderStatus.OK) {
             lat = results[0].geometry.location.lat();
             lng = results[0].geometry.location.lng();
-            callback(lat, lng);
+            callback(address, lat, lng);
         } else {
             alert("Geocode was not successful for the following reason: " + status);
         }
     });
 }
 
-var buildEventJson = function() {
+var buildEventJson = function(addr, lat, lng) {
 
     owner = $("a.navbar-brand strong").text();
     title = $("#title").val();
     descr = $("#descr").val();
-    addr = $("#addr").val() + ", " + $("#zipcode").val() + " " + $("#city").val() + ", " + "France";
+
     date = $("#datepicker").datepicker().val();
     time = $("#timepicker").val();
-
-    var lat;
-    var lng;
-    geocodeAddress(addr, function(la, ln) { lat = la; lng = ln; });
+    path = createPointListForRoute(gLatLngArray);
 
     var event_type = "";
 
@@ -34,17 +31,11 @@ var buildEventJson = function() {
         event_type = "VELO";
     }
 
-    return { "owner" : owner, "title" : title, "descr" : descr, "event_type" : event_type, "address" : addr, "start_date" : date, "start_time" : time, "lat" : lat, "lng" : lng };
+    return { "owner" : owner, "title" : title, "descr" : descr, "event_type" : event_type, "address" : addr, "path" : path, "start_date" : date, "start_time" : time, "lat" : lat, "lng" : lng };
 };
 
-$(document).ready(function () {
-
-    $( "#datepicker" ).datepicker( { dateFormat: 'yy-mm-dd' } );
-    $( "#timepicker" ).timeEntry( {show24Hours: true, showSeconds: true} );
-
-    $(".send-event").on('click', function() {
-        event_data = buildEventJson();
-        console.log(JSON.stringify(event_data));
+function sendNewEventByAJAX(addr, la, ln) {
+        event_data = buildEventJson(addr, la, ln);
         $.ajax({
             headers: {
                 'Accept': 'application/json',
@@ -62,6 +53,16 @@ $(document).ready(function () {
                 noty({layout: 'bottom', type: 'error', text: "Erreur lors de l'envoi des données : " + data, timeout : 2000});
             }
         });
+}
+
+$(document).ready(function () {
+
+    $( "#datepicker" ).datepicker( { dateFormat: 'yy-mm-dd' } );
+    $( "#timepicker" ).timeEntry( {show24Hours: true, showSeconds: true} );
+
+    $(".send-event").on('click', function() {
+        addr = $("#addr").val() + ", " + $("#zipcode").val() + " " + $("#city").val() + ", " + "France";
+        geocodeAddress(addr, sendNewEventByAJAX);
     });
 
 });

@@ -38,83 +38,119 @@
             </div>
         </div>
 
-        <div class="container">
-            <h2>Nouvel évènement</h2>
-            <br>
-            <form role="form">
+        <div id="map-canvas"></div>
 
-                <div class="form-group">
-                    <label for="title">Titre</label>
-                    <input type="text" class="form-control" id="title" placeholder="Titre de l'évènement">
+        <div class="container-fluid" id="main">
+            <div class="row">
+                <div class="col-xs-8" id="right">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <h2>Nouvel évènement</h2>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+
+                                <form name="controlPanel" id="controlPanel">
+
+                                    <div id="noDefaultLocButtons">
+                                        <input type="button" name="startRecording" id="startRecording" value="Start recording">
+                                        <input type="button" name="removeLastLegButton" id="removeLastLegButton" value=" Undo last point" onclick="removeLastLeg()">
+                                    </div>
+                                    
+                                    <table class="plain">
+                                        <tr class="distanceRow">
+                                            <td class="col1">Distance:</td>
+                                            <td><span id="mileage">0</span> <span id="dstUnits1">km</span></td>
+                                        </tr>
+                                    </table>
+
+                                    <div class="para"><a href="javascript:clearLinkHandler();">Clear points and start over</a></div>
+                                </form>
+                            </div>
+                        </div>
+                    
+
+                    <br>
+                    <form role="form">
+
+                        <div class="form-group">
+                            <label for="title">Titre</label>
+                            <input type="text" class="form-control" id="title" placeholder="Titre de l'évènement">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="descr">Description </label>
+                            <textarea class="form-control" rows="5" id="descr" placeholder="Descriptif de l'évènement"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="addr">Addresse </label>
+                            <input type="text" class="form-control" id="addr" placeholder="Addresse">
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <label for="zip">Code postal </label>
+                                    <input type="text" class="form-control" id="zipcode" placeholder="75000">
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <label for="city">Ville </label>
+                                    <input type="text" class="form-control" id="city" placeholder="Paris">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <label for="date">Date </label>
+                                    <input type="text" class="form-control" id="datepicker">
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <label for="time">Heure </label>
+                                    <input type="text" class="form-control" id="timepicker">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <li> <label for="eventtype">Type d'évenement </label>
+                                        <ul>
+                                            <li><label for="rando">Randonnée</label> <input type="radio" name="eventtype" value="r"></li>
+                                            <li><label for="velo">Cyclisme</label> <input type="radio" name="eventtype" value="v"></li>
+                                        </ul>
+                                    </li>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-default send-event">Soumettre</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
                 </div>
 
-                <div class="form-group">
-                    <label for="descr">Description </label>
-                    <textarea class="form-control" rows="5" id="descr" placeholder="Descriptif de l'évènement"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="addr">Addresse </label>
-                    <input type="text" class="form-control" id="addr" placeholder="Addresse">
-                </div>
-                <div class="row">
-                    <div class="col-xs-6 col-sm-6 col-md-6">
-                        <div class="form-group">
-                            <label for="zip">Code postal </label>
-                            <input type="text" class="form-control" id="zipcode" placeholder="75000">
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-6">
-                        <div class="form-group">
-                            <label for="city">Ville </label>
-                            <input type="text" class="form-control" id="city" placeholder="Paris">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-6 col-sm-6 col-md-6">
-                        <div class="form-group">
-                            <label for="date">Date </label>
-                            <input type="text" class="form-control" id="datepicker">
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-6">
-                        <div class="form-group">
-                            <label for="time">Heure </label>
-                            <input type="text" class="form-control" id="timepicker">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-6 col-sm-6 col-md-6">
-                        <div class="form-group">
-                            <li> <label for="eventtype">Type d'évenement </label>
-                                <ul>
-                                    <li><label for="rando">Randonnée</label> <input type="radio" name="eventtype" value="r"></li>
-                                    <li><label for="velo">Cyclisme</label> <input type="radio" name="eventtype" value="v"></li>
-                                </ul>
-                            </li>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-6">
-                        <div class="form-group">
-                            <button type="button" class="btn btn-default send-event">Soumettre</button>
-                        </div>
-                    </div>
-                </div>
-
-            </form>
+                <div class="col-xs-4"></div>
+            </div>
         </div>
+
+
 
         <script src="<c:url value="/static/js/jquery-1.11.2.js" />"></script>
         <script src="<c:url value="/static/js/bootstrap.min.js" />"></script>
         <script src="<c:url value="/static/js/noty/packaged/jquery.noty.packaged.min.js" />"></script>
-        <script src="http://maps.google.com/maps/api/js?sensor=false&output=embed"></script>
         <script src="<c:url value="/static/js/jquery-ui.js" />"></script>
         <script src="<c:url value="/static/js/jquery.plugin.js" />"></script>
         <script src="<c:url value="/static/js/jquery.timeentry.js" />"></script>
+        <script src="<c:url value="/static/js/gmp.js" />"></script>
         <script src="<c:url value="/static/js/event_registration.js" />"></script>
     </body>
 </html>

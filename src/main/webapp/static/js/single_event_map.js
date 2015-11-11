@@ -1,3 +1,6 @@
+var gLatLngs;
+var map;
+
 $(document).ready(function(){
     google.maps.event.addDomListener(window, 'load', initialize);
 
@@ -10,7 +13,7 @@ $(document).ready(function(){
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
-        var map = new google.maps.Map(document.getElementById("map-canvas"), options);
+        map = new google.maps.Map(document.getElementById("map-canvas"), options);
 
         var marker = new google.maps.Marker({
             position: latlng,
@@ -20,6 +23,29 @@ $(document).ready(function(){
         });
 
         marker.setMap(map);
+
+        google.maps.event.addListener(map, "move", function() {
+            redrawLinesAndMarkers(gLatLngArray)
+        });
+
+        google.maps.event.addListener(map, "zoomend", function(h, g) {
+            prepMarkerArray();
+            redrawLinesAndMarkers(gLatLngArray)
+        });
+
+        gLatLngs = JSON.parse($(".path").text());
+        bRecordPoints = true;
+        var i = 0;
+        if (gLatLngs.length > 0) {
+            gLatLngs.forEach(function(entry) {
+                addLeg(entry.lon, entry.lat, LOADING_FROM_QUERY);
+                pointTypeArray.push(entry.pt);
+            });
+
+            drawPolyLine(gLatLngArray);
+            drawMarkers(gLatLngArray);
+        }
+
     };
 
 });
