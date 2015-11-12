@@ -52,18 +52,18 @@
                                 <form name="controlPanel" id="controlPanel">
 
                                     <div id="noDefaultLocButtons">
-                                        <input type="button" name="startRecording" id="startRecording" value="Start recording">
-                                        <input type="button" name="removeLastLegButton" id="removeLastLegButton" value=" Undo last point" onclick="removeLastLeg()">
+                                        <input type="button" class="btn btn-info" name="startRecording" id="startRecording" value="Activer trace de la route">
+                                        <input type="button" class="btn btn-info" name="removeLastLegButton" id="removeLastLegButton" value="Enlever dernier point" onclick="removeLastLeg()">
                                     </div>
                                     
                                     <table class="plain">
                                         <tr class="distanceRow">
-                                            <td class="col1">Distance:</td>
+                                            <td class="col1">Distance : </td>
                                             <td><span id="mileage">0</span> <span id="dstUnits1">km</span></td>
                                         </tr>
                                     </table>
 
-                                    <div class="para"><a href="javascript:clearLinkHandler();">Clear points and start over</a></div>
+                                    <div class="para"><a href="javascript:clearLinkHandler();">Tout effacer</a></div>
                                 </form>
                             </div>
                         </div>

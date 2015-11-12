@@ -10,6 +10,7 @@
         <title>IDF Eventer</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link href="<c:url value="/static/css/bootstrap.min.css"  />" rel="stylesheet">
+        <link href="<c:url value="/static/css/jquery-ui.css" />" rel="stylesheet">
         <link href="<c:url value="/static/css/styles.css" />" rel="stylesheet">
     </head>
     <body>
@@ -20,9 +21,9 @@
                                  value="${_csrf.token}" />
         </form>
         <script>
-            function formSubmit() {
-                document.getElementById("logoutForm").submit();
-            }
+                                 function formSubmit() {
+                                 document.getElementById("logoutForm").submit();
+                                 }
         </script>
 
         <div class="navbar navbar-custom navbar-fixed-top">
@@ -37,7 +38,7 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="<c:url value='/app/main' />">Accueil</a></li>
                     <li><a href="<c:url value='/app/newevent' />">Créer nouveau évènement</a></li>
-                    <li><a href="<c:url value='/app/myevents' />">Mes évènements</a></li>
+                    <li><a href="<c:url value='/app/profile' />">Mon profil</a></li>
                     <li class="navbar-right"></li>
                 </ul>
                 <div class="navbar-right">
@@ -55,11 +56,24 @@
                     <div class="sidebar">
                         <h4>Par type d'évènement</h4>
                         <ul>
-                            <li><input type="checkbox" id="rando" onclick="boxclick(this,'rando')" /> Randonnées</li>
-                            <li><input type="checkbox" id="velo" onclick="boxclick(this,'velo')" /> Cyclisme</li>
+                            <li><input type="checkbox" checked id="rando" /> Randonnée</li>
+                            <li><input type="checkbox" checked id="velo"  /> Cyclisme</li>
                         </ul>
 
                         <h4>Par date</h4>
+                        <div id="date-filter">
+                            <div class="form-group">
+                                <label>Entre le </label>
+                                <input type="text" class="form-control" id="datepicker-start">
+                            </div>
+                            <div class="form-group">
+                                <label>et le</label>
+                                <input type="text" class="form-control" id="datepicker-end">
+                            </div>
+                        </div>
+
+                        <button id="filter" class="btn btn-default">Filtrer</button>
+
                     </div>
                 </div>
                 <div class="col-xs-6" id="right">
@@ -81,6 +95,7 @@
         <script src="<c:url value="/static/js/jquery-1.11.2.js" />"></script>
         <script src="<c:url value="/static/js/bootstrap.min.js" />"></script>
         <script src="http://maps.google.com/maps/api/js?output=embed"></script>
+        <script src="<c:url value="/static/js/jquery-ui.js" />"></script>
         <script src="<c:url value="/static/js/events.js" />"></script>
         <script src="<c:url value="/static/js/follow.js" />"></script>
     </body>

@@ -326,7 +326,7 @@ function removeLastLeg() {
         drawPolyLine(gLatLngArray);
         drawMarkers(gLatLngArray);
     } else {
-        alert("No points to remove.\n\nSince all points have been removed, recording has been turned off. Press recording button again to restart.");
+        alert("Il n'y a plus de points à enlever.");
         setRecordingStateAndButtons()
     }
 }
