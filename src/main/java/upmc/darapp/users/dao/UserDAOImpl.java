@@ -31,8 +31,8 @@ public class UserDAOImpl implements UserDAO {
 		List<User> users = new ArrayList<User>();
 
 		users = sessionFactory.getCurrentSession()
-                .createQuery("from User where username=?")
-                .setParameter(0, username)
+                .createQuery("from User where username = :u")
+                .setParameter("u", username)
 				.list();
 
 		if (users.size() > 0) {

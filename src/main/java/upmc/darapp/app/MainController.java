@@ -162,6 +162,7 @@ public class MainController {
 		model.addAttribute("path", e.getPath());
 		model.addAttribute("lat", e.getLat());
 		model.addAttribute("lng", e.getLng());
+        model.addAttribute("event_id", id);
 
         return "single_event";
 	}

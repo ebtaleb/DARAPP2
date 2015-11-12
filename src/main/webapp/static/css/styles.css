@@ -6,15 +6,15 @@ in your HTML file.
 
 license: MIT
 author: bootply.com
-*/
+ */
 
 
 html,body{
-  	height:100%;
+    height:100%;
 }
 
 body{
-  	padding-top:50px; /*padding for navbar*/
+    padding-top:50px; /*padding for navbar*/
 }
 
 ul
@@ -23,7 +23,7 @@ ul
 }
 
 .fixed {
-        position: absolute;
+    position: absolute;
 }
 
 .jumbotron {
@@ -33,16 +33,16 @@ ul
 }
 
 .navbar-custom .icon-bar {
-	background-color:#fff;
+    background-color:#fff;
 }
 
 .navbar-custom {
-	background-color: #168ccc;
+    background-color: #168ccc;
     color:#fff;
 }
 
 .navbar-custom li>a:hover,.navbar-custom li>a:focus {
-	background-color:#49bfff;
+    background-color:#49bfff;
 }
 
 .navbar-custom a{
@@ -50,10 +50,10 @@ ul
 }
 
 .navbar-custom .form-control:focus {
-	border-color: #49bfff;
-	outline: 0;
-	-webkit-box-shadow: inset 0 0 0;
-	box-shadow: inset 0 0 0;
+    border-color: #49bfff;
+    outline: 0;
+    -webkit-box-shadow: inset 0 0 0;
+    box-shadow: inset 0 0 0;
 }
 
 .sidebar-outer {
@@ -66,7 +66,7 @@ ul
 }
 
 #main, #main>.row {
-	height:100%;
+    height:100%;
 }
 
 #main>.row {
@@ -74,11 +74,11 @@ ul
 }
 
 #left {
-	height:100%;
+    height:100%;
 }
 
 #map-canvas {
-	width:33.3333%;
+    width:33.3333%;
     height:calc(100% - 0);
     position:absolute;
     right:16px;
@@ -87,7 +87,55 @@ ul
     overflow:hidden;
 }
 
-#map {
-height: 100%;
-margin: 0px;
+#comment-form {
+    border: 1px solid silver;
+    border-radius: 10px;
+    background-color: seashell;
+    padding: 10px;
+}
+
+.bclearfix:after {
+    visibility:hidden;
+    display:block;
+    font-size:0;
+    content: ".";
+    clear:both;
+    height:0;
+    line-height:
+}
+.bclearfix {
+    display: inline-block;
+}
+* html .bclearfix {
+    height: 1%;
+}
+.bubble-list .bubble img {
+    float:left;
+    width:70px;
+    height:70px;
+    border:3px solid #ffffff;
+    border-radius:10px
+
+}
+.bubble-content {
+    position:relative;
+    float:left;
+    margin-left:12px;
+    width:400px;
+    padding:0px 20px;
+    border-radius:10px;
+    background-color:#FFFFFF;
+    box-shadow:1px 1px 5px rgba(0,0,0,.2);
+}
+
+.bubble {
+    margin-top:20px;
+}
+.point {
+    border-top:10px solid transparent;
+    border-bottom:10px solid transparent;
+    border-right: 12px solid #FFF;
+    position:absolute;
+    left:-10px;
+    top:12px;
 }

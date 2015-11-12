@@ -28,7 +28,7 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="<c:url value='/app/main' />">Accueil</a></li>
                     <li><a href="<c:url value='/app/newevent' />">Créer nouveau évènement</a></li>
-                    <li><a href="<c:url value='/app/myevents' />">Mes évènements</a></li>
+                    <li><a href="<c:url value='/app/profile' />">Mon profil</a></li>
                     <li class="navbar-right"></li>
                 </ul>
                 <div class="navbar-right">

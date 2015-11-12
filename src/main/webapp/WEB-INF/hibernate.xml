@@ -25,6 +25,7 @@
         <property name="annotatedClasses">
             <list>
                 <value>upmc.darapp.api.model.Event</value>
+                <value>upmc.darapp.api.model.Comment</value>
                 <value>upmc.darapp.users.model.User</value>
                 <value>upmc.darapp.users.model.UserRole</value>
             </list>
@@ -42,6 +43,10 @@
     </bean>
 
     <bean id="eventDAO" class="upmc.darapp.api.dao.EventDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <bean id="commentDAO" class="upmc.darapp.api.dao.CommentDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
 

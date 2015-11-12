@@ -20,9 +20,9 @@
                                  value="${_csrf.token}" />
         </form>
         <script>
-            function formSubmit() {
-                document.getElementById("logoutForm").submit();
-            }
+                                 function formSubmit() {
+                                 document.getElementById("logoutForm").submit();
+                                 }
         </script>
 
         <div class="navbar navbar-custom navbar-fixed-top">
@@ -37,7 +37,7 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="<c:url value='/app/main' />">Accueil</a></li>
                     <li><a href="<c:url value='/app/newevent' />">Créer nouveau évènement</a></li>
-                    <li><a href="<c:url value='/app/myevents' />">Mes évènements</a></li>
+                    <li><a href="<c:url value='/app/profile' />">Mon profil</a></li>
                     <li class="navbar-right"></li>
                 </ul>
                 <div class="navbar-right">
@@ -60,45 +60,75 @@
                     <hr>
 
                     <div class="event">
-		                <c:if test="${not empty title}">
-			                <div class="title">${title}</div>
-		                </c:if>
-		                <c:if test="${not empty desc}">
-			                <div class="desc">${desc}</div>
-		                </c:if>
-		                <c:if test="${not empty addr}">
-			                <div class="addr">${addr}</div>
-		                </c:if>
-		                <c:if test="${not empty date}">
-			                <div class="date">${date}</div>
-		                </c:if>
-		                <c:if test="${not empty time}">
-			                <div class="time">${time}</div>
-		                </c:if>
-		                <c:if test="${not empty lat}">
-			                <div hidden class="lat">${lat}</div>
-		                </c:if>
-		                <c:if test="${not empty lng}">
-			                <div hidden class="lng">${lng}</div>
-		                </c:if>
-		                <c:if test="${not empty path}">
-			                <div hidden class="path">${path}</div>
-		                </c:if>
+                        <c:if test="${not empty title}">
+                        <div class="title">${title}</div>
+                        </c:if>
+                        <c:if test="${not empty desc}">
+                        <div class="desc">${desc}</div>
+                        </c:if>
+                        <c:if test="${not empty addr}">
+                        <div class="addr">${addr}</div>
+                        </c:if>
+                        <c:if test="${not empty date}">
+                        <div class="date">${date}</div>
+                        </c:if>
+                        <c:if test="${not empty time}">
+                        <div class="time">${time}</div>
+                        </c:if>
+                        <c:if test="${not empty lat}">
+                        <div hidden class="lat">${lat}</div>
+                        </c:if>
+                        <c:if test="${not empty lng}">
+                        <div hidden class="lng">${lng}</div>
+                        </c:if>
+                        <c:if test="${not empty path}">
+                        <div hidden class="path">${path}</div>
+                        </c:if>
+                        <c:if test="${not empty event_id}">
+                        <div hidden class="event_id">${event_id}</div>
+                        </c:if>
                     </div>
 
                     <hr>
+                    <h4>Commentaires</h4>
+                    <div class="comments bubble-list">
 
+                    </div>
+
+                    <hr>
+                    <h4>Ajouter un commentaire</h4>
+                    <br>
+                    <form role="form" id="comment-form" data-toggle="validator">
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <label for="name" class="h4">Nom</label>
+                                <input type="text" class="form-control" id="name" required readonly>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="h4 ">Message</label>
+                            <textarea id="message" class="form-control" rows="5" placeholder="Message" required></textarea>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <button type="button" id="comment-submit" class="btn btn-success btn-lg pull-right ">Soumettre</button>
+                        <div class="clearfix"></div>
+                    </form>
                 </div>
 
-                <div class="col-xs-4"><!--map-canvas will be postioned here--></div>
-
             </div>
+
+            <div class="col-xs-4"><!--map-canvas will be postioned here--></div>
+
+        </div>
         </div>
 
         <script src="<c:url value="/static/js/jquery-1.11.2.js" />"></script>
         <script src="<c:url value="/static/js/bootstrap.min.js" />"></script>
+        <script src="<c:url value="/static/js/noty/packaged/jquery.noty.packaged.min.js" />"></script>
         <script src="http://maps.google.com/maps/api/js?libraries=geometry&output=embed"></script>
         <script src="<c:url value="/static/js/gmp.js" />"></script>
         <script src="<c:url value="/static/js/single_event_map.js" />"></script>
+        <script src="<c:url value="/static/js/comment.js" />"></script>
     </body>
 </html>

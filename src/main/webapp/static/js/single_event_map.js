@@ -45,7 +45,6 @@ $(document).ready(function(){
             drawPolyLine(gLatLngArray);
             drawMarkers(gLatLngArray);
         }
-
     };
 
 });

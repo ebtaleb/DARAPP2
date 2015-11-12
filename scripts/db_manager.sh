@@ -40,17 +40,7 @@ while getopts ":c:d:" opt; do
     esac
 done
 
-table="use $db; CREATE TABLE IF NOT EXISTS TRACKS (ID INT (5) NOT NULL AUTO_INCREMENT,TITLE VARCHAR (20) NOT NULL,SINGER VARCHAR (20) NOT NULL,PRIMARY KEY ( ID ));"
-
-mysql -hlocalhost -uroot -pnyanyanya -e "$table"
-if [ "$?" -ne "0" ]; then
-  echo "Sorry, table TRACKS could not be created"
-  exit 1
-else
-  echo "table TRACKS created"
-fi
-
-mysql -hlocalhost -uroot -pnyanyanya $db < "create_user.sql"
+mysql -hlocalhost -uroot -pnyanyanya $db < "users.sql"
 
 if [ "$?" -ne "0" ]; then
   echo "Sorry, table USERS could not be created"
@@ -66,4 +56,13 @@ if [ "$?" -ne "0" ]; then
   exit 1
 else
   echo "table EVENTS created"
+fi
+
+mysql -hlocalhost -uroot -pnyanyanya $db < "comments.sql"
+
+if [ "$?" -ne "0" ]; then
+  echo "Sorry, table COMMENTS could not be created"
+  exit 1
+else
+  echo "table COMMENTS created"
 fi
