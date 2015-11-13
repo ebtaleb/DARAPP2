@@ -24,6 +24,9 @@ import upmc.darapp.api.model.Comment;
 import upmc.darapp.users.dao.UserDAO;
 import upmc.darapp.users.model.User;
 
+import upmc.darapp.api.dao.FollowDAO;
+import upmc.darapp.api.model.Follow;
+
 @RestController
 @RequestMapping("/events")
 public class APIController {
@@ -37,25 +40,28 @@ public class APIController {
     @Autowired
     private CommentDAO commentDAO;
 
+    @Autowired
+    private FollowDAO followDAO;
+
     @RequestMapping(value = "/get", method = RequestMethod.GET)
         public List<Event> getAllEvents() {
             return eventDAO.getAll();
         }
 
-    @RequestMapping(value = "/user_owned_events/{username}/get", method = RequestMethod.GET)
-        public List<Event> getUserOwnedEvents(@PathVariable("username") String un) {
-            List<Event> found = new ArrayList<Event>();
-            if (userDAO.findByUserName(un) != null) {
-                found = eventDAO.findUserOwnedEvents(un);
-            } else {
-
-            }
-            return found;
-        }
-
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
         public Event fetchBy(@PathVariable("id") int id) {
             return eventDAO.get(id);
+        }
+
+    @RequestMapping(value = "/post", method = RequestMethod.POST)
+        public @ResponseBody String createEvent(@RequestBody Event event) {
+            eventDAO.add(event);
+            List<Event> l = eventDAO.getAll();
+            Event last = l.get(l.size() - 1);
+            JSONObject json = new JSONObject();
+            json.put("created", "success");
+            json.put("id", last.getId());
+            return json.toString();
         }
 
     @RequestMapping(value = "/get/{id}/comments/get", method = RequestMethod.GET)
@@ -73,24 +79,30 @@ public class APIController {
             return json.toString();
         }
 
-    @RequestMapping(value = "/post", method = RequestMethod.POST)
-        public @ResponseBody String createEvent(@RequestBody Event event) {
-            eventDAO.add(event);
-            List<Event> l = eventDAO.getAll();
-            Event last = l.get(l.size() - 1);
-            JSONObject json = new JSONObject();
-            json.put("created", "success");
-            json.put("id", last.getId());
-            return json.toString();
+    @RequestMapping(value = "/{user}/is_following", method = RequestMethod.POST)
+        public @ResponseBody List<Event> eventsUserSubscribedTo(@PathVariable("user") String un) {
+            return new ArrayList<Event>();
         }
 
-    @RequestMapping(value = "/put", method = RequestMethod.PUT)
-        public void updateEvent(@RequestBody Event event, HttpServletResponse response) {
-            eventDAO.update(event);
+    @RequestMapping(value = "/{id}/{user}/follow", method = RequestMethod.POST)
+        public void subscribeUserToEvent(@PathVariable("id") int id, @PathVariable("user") String u) {
+            followDAO.addUserFollow(u, id);
         }
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-        public void deleteEvent(@PathVariable("id") int id, HttpServletResponse response) {
-            eventDAO.delete(id);
+    @RequestMapping(value = "/{id}/{user}/follow", method = RequestMethod.DELETE)
+        public void unsubscribeUserToEvent(@PathVariable("id") int id, @PathVariable("user") String u) {
+            followDAO.removeUserFollow(u, id);
         }
+
+    @RequestMapping(value = "/user_owned_events/{username}/get", method = RequestMethod.GET)
+        public List<Event> getUserOwnedEvents(@PathVariable("username") String un) {
+            List<Event> found = new ArrayList<Event>();
+            if (userDAO.findByUserName(un) != null) {
+                found = eventDAO.findUserOwnedEvents(un);
+            } else {
+
+            }
+            return found;
+        }
+
 }

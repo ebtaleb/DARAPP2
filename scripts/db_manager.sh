@@ -66,3 +66,12 @@ if [ "$?" -ne "0" ]; then
 else
   echo "table COMMENTS created"
 fi
+
+mysql -hlocalhost -uroot -pnyanyanya $db < "follows.sql"
+
+if [ "$?" -ne "0" ]; then
+  echo "Sorry, table FOLLOWS could not be created"
+  exit 1
+else
+  echo "table FOLLOWS created"
+fi

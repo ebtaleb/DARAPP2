@@ -87,6 +87,9 @@
                         <c:if test="${not empty event_id}">
                         <div hidden class="event_id">${event_id}</div>
                         </c:if>
+                        <c:if test="${not empty button}">
+                        ${button}
+                        </c:if>
                     </div>
 
                     <hr>
@@ -130,5 +133,6 @@
         <script src="<c:url value="/static/js/gmp.js" />"></script>
         <script src="<c:url value="/static/js/single_event_map.js" />"></script>
         <script src="<c:url value="/static/js/comment.js" />"></script>
+        <script src="<c:url value="/static/js/follow.js" />"></script>
     </body>
 </html>

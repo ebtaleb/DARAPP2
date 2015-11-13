@@ -1,40 +1,50 @@
-$('body').on('click', 'button.followUser', function() {
-        var userid = $(this).attr("id");
+$(document).ready(function () {
+
+    $('body').on('click', 'button.followUser', function() {
+        username = $("a.navbar-brand strong").text();
+        event_id = $(this).attr("id");
+
+        $.ajax({
+            type: "POST",
+            url: "../../api/events/"+event_id+"/"+username+"/follow",
+        });
 
         $(this).fadeOut(300);
-        $(this).parent().html('<button id="' +userid + '" name="unfollow" class="btn btn-info unfollowUser">Following</button>');
+        $(this).toggleClass("followUser", false);
+        $(this).toggleClass("btn-default", false);
+        $(this).toggleClass("btn-info", true);
+        $(this).toggleClass("unfollowUser", true);
+        $(this).html("Inscrit");
         $(this).fadeIn(300);
-});
+    });
 
-$('body').on('click', 'button.unfollowUser', function() {
-        var userid = $(this).attr("id");
+    $('body').on('click', 'button.unfollowUser', function() {
+        username = $("a.navbar-brand strong").text();
+        event_id = $(this).attr("id");
 
+        $.ajax({
+            type: "DELETE",
+            url: "../../api/events/"+event_id+"/"+username+"/follow",
+        });
         $(this).fadeOut(300);
-        $(this).parent().html('<button id="' +userid + '" name="follow" class="btn btn-default followUser">Follow</button>');
+        $(this).toggleClass("unfollowUser", false);
+        $(this).toggleClass("btn-danger", false);
+        $(this).toggleClass("btn-default", true);
+        $(this).toggleClass("followUser", true);
+        $(this).html("S\'inscrire");
         $(this).fadeIn(300);
-});
+    });
 
-$('body').on('mouseenter', 'button.unfollowUser', function() {
+    $('body').on('mouseenter', 'button.unfollowUser', function() {
         $(this).toggleClass("btn-info", false);
         $(this).toggleClass("btn-danger", true);
-        $(this).html("Unfollow");
-});
+        $(this).html("Se désinscrire");
+    });
 
-$('body').on('mouseleave', 'button.unfollowUser', function() {
+    $('body').on('mouseleave', 'button.unfollowUser', function() {
         $(this).toggleClass("btn-danger", false);
         $(this).toggleClass("btn-info", true);
-        $(this).html("Following");;
-});
+        $(this).html("Inscrit");;
+    });
 
-//$.ajax({
-    //type: "PUT",
-    //url: "api/events/"+id+"/",
-    //data: dataString,
-    //cache: false,
-    //beforeSend: function() {},
-    //success: function(html)
-    //{
-        //$("#followButton").html('<button id="' +userid '" name="unfollow" class="btn btn-danger unfollowUser">Unfollow</button>');
-        //$("#followButton").fadeIn(300);
-    //}
-//});
+});

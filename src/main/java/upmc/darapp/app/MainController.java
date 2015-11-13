@@ -24,6 +24,7 @@ import upmc.darapp.api.model.Event;
 import upmc.darapp.users.dao.UserDAO;
 import upmc.darapp.users.model.User;
 import upmc.darapp.users.model.UserRole;
+import upmc.darapp.api.dao.FollowDAO;
 
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -39,6 +40,9 @@ public class MainController {
 
     @Autowired
     UserDAO userDAO;
+
+    @Autowired
+    FollowDAO followDAO;
 
     @Autowired
     AuthenticationManager authenticationManager;
@@ -154,6 +158,7 @@ public class MainController {
     @RequestMapping(value = "/event/{id}", method = RequestMethod.GET)
 	public String event(@PathVariable("id") int id, ModelMap model) {
         Event e = eventDAO.get(id);
+
 		model.addAttribute("title", e.getTitle());
 		model.addAttribute("desc", e.getDescr());
 		model.addAttribute("addr", e.getAddress());
@@ -163,6 +168,20 @@ public class MainController {
 		model.addAttribute("lat", e.getLat());
 		model.addAttribute("lng", e.getLng());
         model.addAttribute("event_id", id);
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName();
+
+        String html_button = "<button id='" + id + "' class='btn "; 
+
+        if (followDAO.testUserForEvent(name, id)) {
+            html_button += "btn-info unfollowUser'>Inscrit";
+        } else {
+            html_button += "btn-default followUser'>S'inscrire";
+        }
+
+        html_button += "</button>";
+        model.addAttribute("button", html_button);
 
         return "single_event";
 	}

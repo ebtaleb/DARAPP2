@@ -1,20 +1,9 @@
-var createSubscribeButton = function(id) {
-    div = document.createElement("div");
-    div.className = "followButton";
-
-    button = document.createElement("button");
-    button.className = "btn btn-default followUser";
-    button.setAttribute('id',""+id);
-    button.setAttribute('name',"follow");
-    button.innerHTML = "Suivre";
-
-    div.appendChild(button);
-    return div;
-}
-
 var createEventItem = function(item) {
+    id = item.id
+
     newdiv = document.createElement("div");
     newdiv.className = "event";
+    newdiv.setAttribute("id","event_"+id);
 
     newpanel = document.createElement("div");
     newpanel.className = "panel panel-default";
@@ -23,7 +12,7 @@ var createEventItem = function(item) {
     panelheading.className = "panel-heading";
 
     newlink = document.createElement("a");
-    newlink.setAttribute("href", "event/"+item.id);
+    newlink.setAttribute("href", "event/"+id);
     newlink.innerHTML = item.title;
 
     p_desc = document.createElement("p");
@@ -38,7 +27,6 @@ var createEventItem = function(item) {
     newdiv.appendChild(newpanel);
     newdiv.appendChild(p_desc);
     newdiv.appendChild(p_addr);
-    newdiv.appendChild(createSubscribeButton(item.id));
 
     return newdiv;
 }

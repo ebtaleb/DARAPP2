@@ -97,6 +97,5 @@
         <script src="http://maps.google.com/maps/api/js?output=embed"></script>
         <script src="<c:url value="/static/js/jquery-ui.js" />"></script>
         <script src="<c:url value="/static/js/events.js" />"></script>
-        <script src="<c:url value="/static/js/follow.js" />"></script>
     </body>
 </html>

@@ -24,6 +24,7 @@
         <property name="dataSource" ref="dataSource" />
         <property name="annotatedClasses">
             <list>
+                <value>upmc.darapp.api.model.Follow</value>
                 <value>upmc.darapp.api.model.Event</value>
                 <value>upmc.darapp.api.model.Comment</value>
                 <value>upmc.darapp.users.model.User</value>
@@ -47,6 +48,10 @@
     </bean>
 
     <bean id="commentDAO" class="upmc.darapp.api.dao.CommentDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <bean id="followDAO" class="upmc.darapp.api.dao.FollowDAOImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
 
