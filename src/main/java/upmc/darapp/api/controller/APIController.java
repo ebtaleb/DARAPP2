@@ -63,7 +63,7 @@ public class APIController {
             return commentDAO.getAllCommentsForEvent(id);
         }
 
-    @RequestMapping(value = "/get/{id}/post_comment", method = RequestMethod.POST)
+    @RequestMapping(value = "/{id}/post_comment", method = RequestMethod.POST)
         public @ResponseBody String addCommentToEvent(@PathVariable("id") int id, @RequestBody Comment c) {
             commentDAO.add(c);
             JSONObject json = new JSONObject();
