@@ -1,31 +1,30 @@
 package upmc.darapp.api.controller;
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.servlet.http.HttpServletResponse;
-import org.json.JSONObject;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-import upmc.darapp.api.dao.EventDAO;
-import upmc.darapp.api.model.Event;
-import upmc.darapp.api.dao.CommentDAO;
-import upmc.darapp.api.model.Comment;
-import upmc.darapp.users.dao.UserDAO;
-import upmc.darapp.users.model.User;
+import javax.servlet.http.HttpServletResponse;
 
-import upmc.darapp.api.dao.FollowDAO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import org.json.JSONObject;
+
+import upmc.darapp.users.model.User;
+import upmc.darapp.users.dao.UserDAO;
+
+import upmc.darapp.api.model.Event;
+import upmc.darapp.api.dao.EventDAO;
+
+import upmc.darapp.api.model.Comment;
+import upmc.darapp.api.dao.CommentDAO;
+
 import upmc.darapp.api.model.Follow;
+import upmc.darapp.api.dao.FollowDAO;
 
 @RestController
 @RequestMapping("/events")

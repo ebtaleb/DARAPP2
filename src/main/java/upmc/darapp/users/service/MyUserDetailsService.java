@@ -1,9 +1,9 @@
 package upmc.darapp.users.service;
 
-import java.util.ArrayList;
+import java.util.Set;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -15,8 +15,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import upmc.darapp.users.dao.UserDAO;
 import upmc.darapp.users.model.UserRole;
+import upmc.darapp.users.dao.UserDAO;
 
 @Service("userDetailsService")
 public class MyUserDetailsService implements UserDetailsService {
@@ -39,8 +39,6 @@ public class MyUserDetailsService implements UserDetailsService {
 		
 	}
 
-	// Converts upmc.darapp.users.model.User user to
-	// org.springframework.security.core.userdetails.User
 	private User buildUserForAuthentication(upmc.darapp.users.model.User user, List<GrantedAuthority> authorities) {
 		return new User(user.getUsername(), user.getPassword(), true, true, true, true, authorities);
 	}

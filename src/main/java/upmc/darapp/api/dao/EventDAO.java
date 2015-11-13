@@ -1,12 +1,14 @@
 package upmc.darapp.api.dao;
 
-import upmc.darapp.api.model.Event;
 import java.util.List;
 
+import upmc.darapp.api.model.Event;
+
 public interface EventDAO {
+    Event get(int id);
+    void add(Event event);
     List<Event> getAll();
     List<Event> findUserOwnedEvents(String u);
-    Event get(int id);
     List<Event> findUserEventSubscriptions(String u);
-    void add(Event event);
+
 }

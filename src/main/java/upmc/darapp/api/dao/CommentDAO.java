@@ -1,7 +1,8 @@
 package upmc.darapp.api.dao;
 
-import upmc.darapp.api.model.Comment;
 import java.util.List;
+
+import upmc.darapp.api.model.Comment;
 
 public interface CommentDAO {
     List<Comment> getAllCommentsForEvent(int e_id);

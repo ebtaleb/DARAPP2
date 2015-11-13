@@ -7,7 +7,6 @@
     http://www.springframework.org/schema/security/spring-security.xsd">
 
         <http auto-config="true" use-expressions="true">
-            <intercept-url pattern="/app/admin**" access="hasRole('ROLE_ADMIN')" />
             <intercept-url pattern="/app/main**" access="hasRole('ROLE_USER')" />
             <intercept-url pattern="/app/event**" access="hasRole('ROLE_USER')" />
             <intercept-url pattern="/app/profile**" access="hasRole('ROLE_USER')" />

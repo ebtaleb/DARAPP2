@@ -1,9 +1,6 @@
 package upmc.darapp.users.dao;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.HashSet;
-import java.util.Set;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +25,7 @@ public class UserDAOImpl implements UserDAO {
     @Transactional
 	public User findByUserName(String username) {
 
-		List<User> users = new ArrayList<User>();
+		List<User> users = null;
 
 		users = sessionFactory.getCurrentSession()
                 .createQuery("from User where username = :u")
