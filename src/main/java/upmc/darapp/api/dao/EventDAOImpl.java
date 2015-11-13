@@ -23,60 +23,45 @@ public class EventDAOImpl implements EventDAO {
         this.sessionFactory = sessionFactory;
     }
 
+    @Transactional
     public List<Event> getAll() {
         session = sessionFactory.openSession();
-        session.beginTransaction();
         Query query = session.createQuery("from Event");
-
         List<Event> ts = query.list();
-
-        session.getTransaction().commit();
-        session.close();
 
         return ts;
     }
 
+    @Transactional
     public List<Event> findUserOwnedEvents(String u) {
         session = sessionFactory.openSession();
-        session.beginTransaction();
-        Query query = session.createQuery("select event from Event event, User user where event.owner = user.username");
-
-        List<Event> ts = query.list();
-
-        session.getTransaction().commit();
-        session.close();
+        Query query = session.createQuery("from Event event where event.owner = :u");
+        List<Event> ts = query.setParameter("u", u).list();
 
         return ts;
     }
 
+    @Transactional
+    public List<Event> findUserEventSubscriptions(String u) {
+        session = sessionFactory.openSession();
+        Query query = session.createQuery("select event from Event event, Follow follow where follow.user = :u and follow.followed_event_id = event.id");
+
+        List<Event> ts = query.setParameter("u", u).list();
+        return ts;
+    }
+
+    @Transactional
     public Event get(int id) {
         session = sessionFactory.openSession();
-        session.beginTransaction();
         Query query = session.createQuery("from Event where id = :id");
         query.setParameter("id", id);
         Event found = (Event) query.uniqueResult();
 
-        session.getTransaction().commit();
-        session.close();
-
         return found;
     }
 
+    @Transactional
     public void add(Event event) {
-        session = sessionFactory.openSession();
-        session.beginTransaction();
-
         session.save(event);
-
-        session.getTransaction().commit();
-        session.close();
-    }
-
-    public void update(Event event) {
-
-    }
-
-    public void delete(int id) {
-
     }
 }

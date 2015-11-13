@@ -79,9 +79,9 @@ public class APIController {
             return json.toString();
         }
 
-    @RequestMapping(value = "/{user}/is_following", method = RequestMethod.POST)
+    @RequestMapping(value = "/{user}/is_following", method = RequestMethod.GET)
         public @ResponseBody List<Event> eventsUserSubscribedTo(@PathVariable("user") String un) {
-            return new ArrayList<Event>();
+            return eventDAO.findUserEventSubscriptions(un);
         }
 
     @RequestMapping(value = "/{id}/{user}/follow", method = RequestMethod.POST)

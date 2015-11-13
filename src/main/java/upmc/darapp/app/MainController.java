@@ -185,4 +185,9 @@ public class MainController {
 
         return "single_event";
 	}
+
+	@RequestMapping(value = "/profile", method = RequestMethod.GET)
+	public ModelAndView profile() {
+        return new ModelAndView("profile");
+    }
 }

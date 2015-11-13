@@ -7,7 +7,6 @@ public interface EventDAO {
     List<Event> getAll();
     List<Event> findUserOwnedEvents(String u);
     Event get(int id);
+    List<Event> findUserEventSubscriptions(String u);
     void add(Event event);
-    void update(Event event);
-    void delete(int id);
 }

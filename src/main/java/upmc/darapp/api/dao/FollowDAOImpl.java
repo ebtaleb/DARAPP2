@@ -55,21 +55,4 @@ public class FollowDAOImpl implements FollowDAO {
         query.executeUpdate();
         session.flush();
     }
-
-    @Transactional
-    public List<String> getAllUsersForEvent(int e_id) {
-        session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select follow.user from Follow follow where follow.followed_event_id = :e_id");
-        List<String> result = query.setParameter("e_id", e_id).list();
-        return result;
-    }
-
-    @Transactional
-    public List<Integer> getAllEventsofUser(String u) {
-        session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select follow.followed_event_id from Follow follow where follow.user = :user");
-        List<Integer> result = query.setParameter("user", u).list();
-        return result;
-    }
-
 }
