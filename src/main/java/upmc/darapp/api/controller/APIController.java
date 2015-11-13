@@ -42,14 +42,9 @@ public class APIController {
     @Autowired
     private FollowDAO followDAO;
 
-    @RequestMapping(value = "/get", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
         public List<Event> getAllEvents() {
             return eventDAO.getAll();
-        }
-
-    @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
-        public Event fetchBy(@PathVariable("id") int id) {
-            return eventDAO.get(id);
         }
 
     @RequestMapping(value = "/post", method = RequestMethod.POST)
@@ -63,12 +58,12 @@ public class APIController {
             return json.toString();
         }
 
-    @RequestMapping(value = "/get/{id}/comments/get", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}/get_comments", method = RequestMethod.GET)
         public List<Comment> fetchCommentsByEventId(@PathVariable("id") int id) {
             return commentDAO.getAllCommentsForEvent(id);
         }
 
-    @RequestMapping(value = "/get/{id}/comments/post", method = RequestMethod.POST)
+    @RequestMapping(value = "/get/{id}/post_comment", method = RequestMethod.POST)
         public @ResponseBody String addCommentToEvent(@PathVariable("id") int id, @RequestBody Comment c) {
             commentDAO.add(c);
             JSONObject json = new JSONObject();
@@ -78,23 +73,23 @@ public class APIController {
             return json.toString();
         }
 
-    @RequestMapping(value = "/{user}/is_following", method = RequestMethod.GET)
+    @RequestMapping(value = "/{user}/get_subscriptions", method = RequestMethod.GET)
         public @ResponseBody List<Event> eventsUserSubscribedTo(@PathVariable("user") String un) {
             return eventDAO.findUserEventSubscriptions(un);
         }
 
-    @RequestMapping(value = "/{id}/{user}/follow", method = RequestMethod.POST)
-        public void subscribeUserToEvent(@PathVariable("id") int id, @PathVariable("user") String u) {
+    @RequestMapping(value = "/{id}/{user}/subscribe", method = RequestMethod.POST)
+        public void userSubscribeToEvent(@PathVariable("id") int id, @PathVariable("user") String u) {
             followDAO.addUserFollow(u, id);
         }
 
-    @RequestMapping(value = "/{id}/{user}/follow", method = RequestMethod.DELETE)
-        public void unsubscribeUserToEvent(@PathVariable("id") int id, @PathVariable("user") String u) {
+    @RequestMapping(value = "/{id}/{user}/unsubscribe", method = RequestMethod.DELETE)
+        public void userUnsubscribeToEvent(@PathVariable("id") int id, @PathVariable("user") String u) {
             followDAO.removeUserFollow(u, id);
         }
 
-    @RequestMapping(value = "/user_owned_events/{username}/get", method = RequestMethod.GET)
-        public List<Event> getUserOwnedEvents(@PathVariable("username") String un) {
+    @RequestMapping(value = "/{user}/get_user_owned_events", method = RequestMethod.GET)
+        public List<Event> getUserOwnedEvents(@PathVariable("user") String un) {
             List<Event> found = new ArrayList<Event>();
             if (userDAO.findByUserName(un) != null) {
                 found = eventDAO.findUserOwnedEvents(un);
@@ -103,5 +98,4 @@ public class APIController {
             }
             return found;
         }
-
 }

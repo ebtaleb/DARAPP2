@@ -25,7 +25,7 @@ var addCommentToEvent = function(id, username, text) {
     if (text) {
 	    $.ajax({
 		    type: "POST",
-		    url: "../../api/events/get/"+id+"/comments/post",
+		    url: "../../api/events/"+id+"/post_comment",
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -49,7 +49,7 @@ $(document).ready(function () {
     var id = $(".event_id").text();
     $("input#name").val(user);
 
-    $.getJSON("../../api/events/get/"+id+"/comments/get")
+    $.getJSON("../../api/events/"+id+"/get_comments")
         .done(function (data) {
             $.each(data, function (key, item) {
                 newcomment = createComment(item.owner, item.content, formatDate(item.creation_time), "http://lorempixel.com/50/50/people/9");

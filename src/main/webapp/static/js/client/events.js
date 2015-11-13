@@ -16,10 +16,13 @@ var createEventItem = function(item) {
     newlink.innerHTML = item.title;
 
     p_desc = document.createElement("p");
-    p_desc.innerHTML = item.descr;
+    p_desc.innerHTML = "<strong>" + item.descr + "</strong>";
 
     p_addr = document.createElement("p");
-    p_addr.innerHTML = item.address;
+    p_addr.innerHTML = "au " + item.address;
+
+    p_date = document.createElement("p");
+    p_date.innerHTML = "le " + item.start_date + " à " + item.start_time;
 
     panelheading.appendChild(newlink);
     newpanel.appendChild(panelheading);
@@ -27,6 +30,7 @@ var createEventItem = function(item) {
     newdiv.appendChild(newpanel);
     newdiv.appendChild(p_desc);
     newdiv.appendChild(p_addr);
+    newdiv.appendChild(p_date);
 
     return newdiv;
 }
@@ -127,7 +131,7 @@ function filter() {
 $(document).ready(function () {
     google.maps.event.addDomListener(window, 'load', initialize);
 
-    $.getJSON("../../api/events/get")
+    $.getJSON("../../api/events/")
         .done(function (data) {
             $.each(data, function (key, item) {
                 $(".event-list").append(createEventItem(item));

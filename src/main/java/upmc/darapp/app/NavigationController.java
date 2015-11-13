@@ -101,9 +101,7 @@ public class NavigationController {
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
 			UserDetails userDetail = (UserDetails) auth.getPrincipal();
 			System.out.println(userDetail);
-
 			model.addObject("username", userDetail.getUsername());
-
 		}
 
 		model.setViewName("403");
@@ -128,11 +126,11 @@ public class NavigationController {
 	public String event(@PathVariable("id") int id, ModelMap model) {
         Event e = eventDAO.get(id);
 
-		model.addAttribute("title", e.getTitle());
-		model.addAttribute("desc", e.getDescr());
-		model.addAttribute("addr", e.getAddress());
-		model.addAttribute("date", e.getStart_date().toString());
-		model.addAttribute("time", e.getStart_time().toString());
+		model.addAttribute("title", "<p><h3>" + e.getTitle() + "</h3></p>");
+		model.addAttribute("desc", "<p><strong>" + e.getDescr() + "</strong></p>");
+		model.addAttribute("addr", "<p><em>Adresse</em> : " + e.getAddress() + "</p>");
+		model.addAttribute("date", "<p>Date : " + e.getStart_date().toString() + "</p>");
+		model.addAttribute("time", "<p>Heure : " + e.getStart_time().toString() + "</p>");
 		model.addAttribute("path", e.getPath());
 		model.addAttribute("lat", e.getLat());
 		model.addAttribute("lng", e.getLng());

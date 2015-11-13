@@ -6,7 +6,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url: "../../api/events/"+event_id+"/"+username+"/follow",
+            url: "../../api/events/"+event_id+"/"+username+"/subscribe",
         });
 
         $(this).fadeOut(300);
@@ -24,7 +24,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "DELETE",
-            url: "../../api/events/"+event_id+"/"+username+"/follow",
+            url: "../../api/events/"+event_id+"/"+username+"/unsubscribe",
         });
         $(this).fadeOut(300);
         $(this).toggleClass("unfollowUser", false);

@@ -8,14 +8,14 @@ function createRow(event) {
 $(document).ready(function () {
     user = $("a.navbar-brand strong").text();
 
-    $.getJSON("../../api/events/user_owned_events/" + user + "/get")
+    $.getJSON("../../api/events/" + user + "/get_user_owned_events")
         .done(function (data) {
             $.each(data, function (key, item) {
                 $("table.me tbody").append(createRow(item));
             });
         });
 
-    $.getJSON("../../api/events/" + user + "/is_following")
+    $.getJSON("../../api/events/" + user + "/get_subscriptions")
         .done(function (data) {
             $.each(data, function (key, item) {
                 $("table.ms tbody").append(createRow(item));

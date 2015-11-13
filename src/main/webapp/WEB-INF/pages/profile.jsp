@@ -48,7 +48,7 @@
         </div>
 
         <div class="my-events">
-            <h4>Mes evenements</h4>
+            <h4>Mes évènements</h4>
             <div class="table-responsive">
                 <table class="table table-bordered table-hover me">
                     <thead>
