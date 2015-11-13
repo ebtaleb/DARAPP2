@@ -142,15 +142,13 @@
             </div>
         </div>
 
-
-
-        <script src="<c:url value="/static/js/jquery-1.11.2.js" />"></script>
+        <script src="<c:url value="/static/js/jquery/jquery-1.11.2.js" />"></script>
         <script src="<c:url value="/static/js/bootstrap.min.js" />"></script>
         <script src="<c:url value="/static/js/noty/packaged/jquery.noty.packaged.min.js" />"></script>
-        <script src="<c:url value="/static/js/jquery-ui.js" />"></script>
-        <script src="<c:url value="/static/js/jquery.plugin.js" />"></script>
-        <script src="<c:url value="/static/js/jquery.timeentry.js" />"></script>
-        <script src="<c:url value="/static/js/gmp.js" />"></script>
-        <script src="<c:url value="/static/js/event_registration.js" />"></script>
+        <script src="<c:url value="/static/js/jquery/jquery-ui.js" />"></script>
+        <script src="<c:url value="/static/js/jquery/jquery.plugin.js" />"></script>
+        <script src="<c:url value="/static/js/jquery/jquery.timeentry.js" />"></script>
+        <script src="<c:url value="/static/js/client/gmp.js" />"></script>
+        <script src="<c:url value="/static/js/client/event_registration.js" />"></script>
     </body>
 </html>

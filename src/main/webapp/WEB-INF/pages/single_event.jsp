@@ -121,18 +121,18 @@
 
             </div>
 
-            <div class="col-xs-4"><!--map-canvas will be postioned here--></div>
+            <div class="col-xs-4"><!--map-canvas will be positioned here--></div>
 
         </div>
         </div>
 
-        <script src="<c:url value="/static/js/jquery-1.11.2.js" />"></script>
+        <script src="<c:url value="/static/js/jquery/jquery-1.11.2.js" />"></script>
         <script src="<c:url value="/static/js/bootstrap.min.js" />"></script>
         <script src="<c:url value="/static/js/noty/packaged/jquery.noty.packaged.min.js" />"></script>
         <script src="http://maps.google.com/maps/api/js?libraries=geometry&output=embed"></script>
-        <script src="<c:url value="/static/js/gmp.js" />"></script>
-        <script src="<c:url value="/static/js/single_event_map.js" />"></script>
-        <script src="<c:url value="/static/js/comment.js" />"></script>
-        <script src="<c:url value="/static/js/follow.js" />"></script>
+        <script src="<c:url value="/static/js/client/gmp.js" />"></script>
+        <script src="<c:url value="/static/js/client/single_event_map.js" />"></script>
+        <script src="<c:url value="/static/js/client/comment.js" />"></script>
+        <script src="<c:url value="/static/js/client/follow.js" />"></script>
     </body>
 </html>

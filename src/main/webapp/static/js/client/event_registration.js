@@ -46,11 +46,11 @@ function sendNewEventByAJAX(addr, la, ln) {
             data: JSON.stringify(event_data),
             dataType: "json",
             success: function(data){
-                noty({layout: 'bottom', type: 'success', text: "Evènement crée", timeout : 2000});
+                noty({layout: 'bottomLeft', type: 'success', text: "Evènement crée", timeout : 2000});
                 window.setTimeout( function() {window.location.href = location.protocol + "//" + location.host + "/app/event/" +data.id;}, 3000 );
             },
             error: function(data) {
-                noty({layout: 'bottom', type: 'error', text: "Erreur lors de l'envoi des données : " + data, timeout : 2000});
+                noty({layout: 'bottomLeft', type: 'error', text: "Erreur lors de l'envoi des données : " + data, timeout : 2000});
             }
         });
 }

@@ -53,8 +53,8 @@
                 <table class="table table-bordered table-hover me">
                     <thead>
                         <tr>
-                            <th>Evenement</th>
-                            <th>Addresse</th>
+                            <th>Evènement</th>
+                            <th>Adresse</th>
                             <th>Date</th>
                             <th>Heure</th>
                         </tr>
@@ -73,8 +73,8 @@
                 <table class="table table-bordered table-hover ms">
                     <thead>
                         <tr>
-                            <th>Evenement</th>
-                            <th>Addresse</th>
+                            <th>Evènement</th>
+                            <th>Adresse</th>
                             <th>Date</th>
                             <th>Heure</th>
                         </tr>
@@ -86,8 +86,8 @@
         </div>
 
 
-        <script src="<c:url value="/static/js/jquery-1.11.2.js" />"></script>
+        <script src="<c:url value="/static/js/jquery/jquery-1.11.2.js" />"></script>
         <script src="<c:url value="/static/js/bootstrap.min.js" />"></script>
-        <script src="<c:url value="/static/js/profile.js" />"></script>
+        <script src="<c:url value="/static/js/client/profile.js" />"></script>
     </body>
 </html>

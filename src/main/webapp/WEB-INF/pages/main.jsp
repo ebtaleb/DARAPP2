@@ -92,10 +92,10 @@
             </div>
         </div>
 
-        <script src="<c:url value="/static/js/jquery-1.11.2.js" />"></script>
+        <script src="<c:url value="/static/js/jquery/jquery-1.11.2.js" />"></script>
         <script src="<c:url value="/static/js/bootstrap.min.js" />"></script>
         <script src="http://maps.google.com/maps/api/js?output=embed"></script>
-        <script src="<c:url value="/static/js/jquery-ui.js" />"></script>
-        <script src="<c:url value="/static/js/events.js" />"></script>
+        <script src="<c:url value="/static/js/jquery/jquery-ui.js" />"></script>
+        <script src="<c:url value="/static/js/client/events.js" />"></script>
     </body>
 </html>

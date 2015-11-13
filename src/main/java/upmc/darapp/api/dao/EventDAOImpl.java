@@ -26,27 +26,21 @@ public class EventDAOImpl implements EventDAO {
     public List<Event> getAll() {
         session = sessionFactory.openSession();
         Query query = session.createQuery("from Event");
-        List<Event> ts = query.list();
-
-        return ts;
+        return query.list();
     }
 
     @Transactional
     public List<Event> findUserOwnedEvents(String u) {
         session = sessionFactory.openSession();
         Query query = session.createQuery("from Event event where event.owner = :u");
-        List<Event> ts = query.setParameter("u", u).list();
-
-        return ts;
+        return query.setParameter("u", u).list();
     }
 
     @Transactional
     public List<Event> findUserEventSubscriptions(String u) {
         session = sessionFactory.openSession();
         Query query = session.createQuery("select event from Event event, Follow follow where follow.user = :u and follow.followed_event_id = event.id");
-
-        List<Event> ts = query.setParameter("u", u).list();
-        return ts;
+        return query.setParameter("u", u).list();
     }
 
     @Transactional
@@ -54,13 +48,13 @@ public class EventDAOImpl implements EventDAO {
         session = sessionFactory.openSession();
         Query query = session.createQuery("from Event where id = :id");
         query.setParameter("id", id);
-        Event found = (Event) query.uniqueResult();
-
-        return found;
+        return (Event) query.uniqueResult();
     }
 
     @Transactional
     public void add(Event event) {
+        session = sessionFactory.openSession();
         session.save(event);
+        session.flush();
     }
 }
