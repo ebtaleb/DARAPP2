@@ -7,4 +7,5 @@ target/*
 *.toc
 *.log
 *.out
-*.pdf
+*.nav
+*.snm

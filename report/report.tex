@@ -34,14 +34,14 @@ Un utilisateur a pour possibilité sur le site de :
     \item S'inscrire à un évènement
     \item Voir ses inscriptions et les évènements qu'il organise
     \item Créer son propre évènement
-    \item Commenter sur un évenement
+    \item Commenter sur un évènement
 \end{itemize}
 
 \chapter{Manuel utilisateur}
 
 \section{Description de l'interface}
 
-\includegraphics[scale=0.33]{illus/main.png}
+\includegraphics[scale=0.33]{illus/main.png} \\[0.25in]
 
 Voici la page principale de l'application après connexion.\\
 La barre de navigation permet respectivement d'accéder à la page ci-dessus, de créer un nouvel évènement, de consulter son profil et de se déconnecter
@@ -78,11 +78,8 @@ Il se rend ensuite sur son profil, pour voir ses sorties. \\[0.25in]
 \section{Schéma}
 
 \begin{center}
-\includegraphics[scale=0.5]{illus/appschema.png} \\[0.25in]
+\includegraphics[scale=0.4]{illus/appschema.png} \\[0.25in]
 \end{center}
-
-
-\clearpage
 
 \section{Choix techniques}
 
@@ -92,8 +89,8 @@ L'application côté serveur a été développée en Java, avec l'aide de plusie
     \item Jetty est un serveur Web HTTP. Il peut contenir des servlets, et d'autres applications peuvent y être adjoints si nécessaire. 
     \item Spring MVC Framework est un framework de développement d'application web.
     \item Spring Security est un module de connexion et d'authentification reposant sur Spring. 
-    \item Hibernate est un framework qui permet de relier des objets Java à des n-uplets dans des tables d'une base de données relationelle.
-    \item MySQL est une base de données relationelle utilisée pour lire et stocker les données traitées.
+    \item Hibernate est un framework qui permet de relier des objets Java à des n-uplets dans des tables d'une base de données relationnelle.
+    \item MySQL est une base de données relationnelle utilisée pour lire et stocker les données traitées.
 \end{itemize}
 
 \vspace{0.5cm}
@@ -115,7 +112,7 @@ La manipulation des cartes se fait avec l'aide de l'API Google Maps.
     \begin{itemize}
         \item D'autres services peuvent être ajoutés dans leur propre conteneur Web grâce à Jetty.
     \end{itemize}
-    \item Elle est facilement déployable grâce à Maven.
+    \item Elle est facilement déployable grâce à Maven, en tant que fichier au format WAR ou JAR.
     \item L'utilisation d'Hibernate permet de prévenir les injections SQL.
     \item Si la création de clients pour d'autres plateformes est envisagée, il n'y a pas besoin de modifier le backend. Les clients pourront communiquer via l'API REST.
 \end{enumerate}
@@ -137,16 +134,16 @@ La manipulation des cartes se fait avec l'aide de l'API Google Maps.
         \end{itemize}
 \end{enumerate}
 
-\section{Améliorations}
+\section{Améliorations à faire}
 \begin{enumerate}
-    \item Centraliser la configuration de Spring et Hibernate de manière programmatique permettrait de se passer des fichiers de configuration en XML.
+    \item Centraliser la configuration de Spring et Hibernate de manière programmatique permettrait de se passer des fichiers de configuration.
     \item Améliorer le rendu sur tablettes et mobiles, rendre l'interface plus réactive.
     \item Renforcer la validation des données.
     \item Rendre l'application visible aux non-utilisateurs.
     \item Restreindre l'utilisation de l'API suivant les utilisateurs.
 \end{enumerate}
 
-\section{Extensions}
+\section{Extensions possibles}
 Les fonctionnalités suivantes pourraient être ajoutées à l'application:
 \begin{enumerate}
     \item D'autres types d'évènements peuvent être gérés. (concerts, ateliers)
