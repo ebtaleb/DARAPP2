@@ -41,7 +41,7 @@
                             <input id="short" name="password" placeholder="Mot de passe" type="password">
                         </div>
                         <div class="form-group">
-                            <button type="submit" name="login" class="btn btn-primary">Login</button>
+                            <button type="submit" name="login" class="btn btn-primary">Se connecter</button>
                         </div>
                     </form>
                 </div>
