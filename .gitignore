@@ -6,4 +6,5 @@ target/*
 *.aux
 *.toc
 *.log
+*.out
 *.pdf
