@@ -33,7 +33,7 @@
                 </ul>
                 <div class="navbar-right">
                     <a class="navbar-brand">Vous êtes connecté en tant que <c:if test="${pageContext.request.userPrincipal.name != null}"><strong>${pageContext.request.userPrincipal.name}</strong></c:if></a>
-                    <a class="navbar-brand" href="javascript:formSubmit()"> Logout</a>
+                    <a class="navbar-brand" href="javascript:formSubmit()"> Déconnexion</a>
                 </div>
             </div>
         </div>
