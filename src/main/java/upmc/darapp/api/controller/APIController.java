@@ -2,6 +2,7 @@ package upmc.darapp.api.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collections;
 
 import java.util.Date;
 import java.text.DateFormat;
@@ -44,7 +45,10 @@ public class APIController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
         public List<Event> getAllEvents() {
-            return eventDAO.getAll();
+            List<Event> result = eventDAO.getAll();
+            Collections.reverse(result);
+
+            return result;
         }
 
     @RequestMapping(value = "/post", method = RequestMethod.POST)

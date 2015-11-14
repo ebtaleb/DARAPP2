@@ -117,7 +117,6 @@ function filter() {
 
         if (date_start_flag && date_end_flag) {
             date_to_match = markers[i].customInfo.start_date.split("-").reverse();
-            alert(date_to_match);
             if (date_to_match[0] >= date_start_arr[0] &&  date_to_match[1] >= date_start_arr[1] && date_to_match[2] >= date_start_arr[2] &&
                     date_to_match[0] <= date_end_arr[0] &&  date_to_match[1] <= date_end_arr[1] && date_to_match[2] <= date_end_arr[2]) {
                 markers[i].setVisible(true);
