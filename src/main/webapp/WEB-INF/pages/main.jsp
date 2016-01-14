@@ -48,6 +48,9 @@
             </div>
         </div>
 
+        <iframe src="http://velib4life.appspot.com/script.php"></iframe>
+        <img src="http://velib4life.appspot.com/script.php"></iframe>
+
         <div id="map-canvas"></div>
         <div class="container-fluid" id="main">
             <div class="row">
