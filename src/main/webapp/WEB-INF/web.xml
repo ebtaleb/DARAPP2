@@ -5,6 +5,18 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
     version="3.0">
 
+    <context-param>
+        <param-name>defaultHtmlEscape</param-name>
+        <param-value>true</param-value>
+    </context-param>
+
+    <session-config>
+        <cookie-config>
+            <!--<secure>true</secure>-->
+            <http-only>true</http-only>
+        </cookie-config>
+    </session-config>
+
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
@@ -13,6 +25,11 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/spring-security.xml, /WEB-INF/hibernate.xml</param-value>
     </context-param>
+
+    <!--<context-param>-->
+        <!--<param-name>contextConfigLocation</param-name>-->
+        <!--<param-value>upmc.darapp.config</param-value>-->
+    <!--</context-param>-->
 
     <listener>
         <listener-class> org.springframework.web.context.ContextLoaderListener</listener-class>
