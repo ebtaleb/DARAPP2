@@ -16,6 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 
+import org.jsoup.Jsoup;
+import org.jsoup.safety.*;
+
 import upmc.darapp.users.model.User;
 import upmc.darapp.users.model.UserRole;
 import upmc.darapp.users.dao.UserDAO;
@@ -84,6 +87,8 @@ public class NavigationController {
 
     @RequestMapping(value = "/user/register", method = RequestMethod.POST)
     public String createNewUser(@ModelAttribute("user") @Valid User user, BindingResult result, HttpServletRequest request, HttpServletResponse response) {
+
+        user.setUsername(cleanString(user.getUsername()));
         userDAO.createNewUser(user);
         userDAO.createNewUserRole(user);
         authenticateUserAndSetSession(user, request);
@@ -126,11 +131,11 @@ public class NavigationController {
 	public String event(@PathVariable("id") int id, ModelMap model) {
         Event e = eventDAO.get(id);
 
-		model.addAttribute("title", "<p><h3>" + e.getTitle() + "</h3></p>");
-		model.addAttribute("desc", "<p><strong>" + e.getDescr() + "</strong></p>");
-		model.addAttribute("addr", "<p><em>Adresse</em> : " + e.getAddress() + "</p>");
-		model.addAttribute("date", "<p>Date : " + e.getStart_date().toString() + "</p>");
-		model.addAttribute("time", "<p>Heure : " + e.getStart_time().toString() + "</p>");
+		model.addAttribute("title", "<p><h3>" + cleanString(e.getTitle()) + "</h3></p>");
+		model.addAttribute("desc", "<p><strong>" + cleanString(e.getDescr()) + "</strong></p>");
+		model.addAttribute("addr", "<p><em>Adresse</em> : " + cleanString(e.getAddress()) + "</p>");
+		model.addAttribute("date", "<p>Date : " + cleanString(e.getStart_date().toString()) + "</p>");
+		model.addAttribute("time", "<p>Heure : " + cleanString(e.getStart_time().toString()) + "</p>");
 		model.addAttribute("path", e.getPath());
 		model.addAttribute("lat", e.getLat());
 		model.addAttribute("lng", e.getLng());
@@ -139,7 +144,7 @@ public class NavigationController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName();
 
-        String html_button = "<button id='" + id + "' class='btn "; 
+        String html_button = "<button id='" + id + "' class='btn ";
 
         if (followDAO.testUserForEvent(name, id)) {
             html_button += "btn-info unfollowUser'>Inscrit";
@@ -152,4 +157,8 @@ public class NavigationController {
 
         return "single_event";
 	}
+
+    private String cleanString(String s) {
+        return Jsoup.clean(s, Whitelist.basic());
+    }
 }

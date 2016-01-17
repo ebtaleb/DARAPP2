@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import org.jsoup.Jsoup;
+import org.jsoup.safety.*;
+
 import org.json.JSONObject;
 
 import upmc.darapp.users.model.User;
@@ -53,6 +56,13 @@ public class APIController {
 
     @RequestMapping(value = "/post", method = RequestMethod.POST)
         public @ResponseBody String createEvent(@RequestBody Event event) {
+
+            event.setOwner(cleanString(event.getOwner()));
+            event.setDescr(cleanString(event.getDescr()));
+            event.setTitle(cleanString(event.getTitle()));
+            event.setEvent_type(cleanString(event.getEvent_type()));
+            event.setAddress(cleanString(event.getAddress()));
+
             eventDAO.add(event);
             List<Event> l = eventDAO.getAll();
             Event last = l.get(l.size() - 1);
@@ -69,6 +79,10 @@ public class APIController {
 
     @RequestMapping(value = "/{id}/post_comment", method = RequestMethod.POST)
         public @ResponseBody String addCommentToEvent(@PathVariable("id") int id, @RequestBody Comment c) {
+
+            c.setOwner(cleanString(c.getOwner()));
+            c.setContent(cleanString(c.getContent()));
+
             commentDAO.add(c);
             JSONObject json = new JSONObject();
             json.put("comment_creation", "success");
@@ -102,4 +116,8 @@ public class APIController {
             }
             return found;
         }
+
+    private String cleanString(String s) {
+        return Jsoup.clean(s, Whitelist.basic());
+    }
 }
