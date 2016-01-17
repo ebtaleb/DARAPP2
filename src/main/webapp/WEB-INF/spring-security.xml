@@ -9,7 +9,7 @@
     <http use-expressions="true">
         <custom-filter ref="csrfFilter" before="LOGOUT_FILTER" />
         <intercept-url pattern="/app/main**" access="hasRole('ROLE_USER')" />
-        <intercept-url pattern="/app/event/**" access="hasRole('ROLE_USER')" />
+        <intercept-url pattern="/app/event**" access="hasRole('ROLE_USER')" />
         <intercept-url pattern="/app/profile**" access="hasRole('ROLE_USER')" />
         <intercept-url pattern="/app/newevent**" access="hasRole('ROLE_USER')" />
         <access-denied-handler error-page="/app/403" />
@@ -21,10 +21,7 @@
             password-parameter="password" />
         <logout logout-success-url="/app/home" delete-cookies="JSESSIONID" invalidate-session="true"/>
         <csrf disabled="true"/>
-        <!--<csrf />-->
     </http>
-
-    <!--<beans:bean id="requestDataValueProcessor" class="org.springframework.security.web.servlet.support.csrf.CsrfRequestDataValueProcessor"/>-->
 
     <beans:bean id="csrfFilter" class="org.springframework.security.web.csrf.CsrfFilter">
         <beans:constructor-arg>
@@ -34,27 +31,23 @@
         </beans:constructor-arg>
     </beans:bean>
 
-    <!--<http use-expressions="true" entry-point-ref="restAuthEntryPoint">-->
-        <!--<intercept-url pattern="/api/**" access="hasRole('ROLE_USER')"/>-->
-
-        <!--<form-login-->
-            <!--authentication-success-handler-ref="mySuccessHandler"-->
-            <!--authentication-failure-handler-ref="myFailureHandler"/>-->
-
-        <!--<logout />-->
+    <!--<http create-session="stateless" use-expressions="true" entry-point-ref="digestEntryPoint">-->
+        <!--<intercept-url pattern="/api**" access="hasRole('ROLE_USER')" />-->
+        <!--<http-basic />-->
+        <!--<custom-filter ref="digestFilter" after="BASIC_AUTH_FILTER" />-->
         <!--<csrf disabled="true"/>-->
     <!--</http>-->
 
-    <beans:bean id="restAuthEntryPoint"
-        class="upmc.darapp.api.security.RestAuthEntryPoint">
+    <beans:bean id="digestFilter" class=
+        "org.springframework.security.web.authentication.www.DigestAuthenticationFilter">
+        <beans:property name="userDetailsService" ref="userDetailsService" />
+        <beans:property name="authenticationEntryPoint" ref="digestEntryPoint" />
     </beans:bean>
 
-    <beans:bean id="mySuccessHandler"
-        class="upmc.darapp.api.security.RestAuthSuccessHandler">
-    </beans:bean>
-
-    <beans:bean id="myFailureHandler"
-        class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
+    <beans:bean id="digestEntryPoint" class=
+        "org.springframework.security.web.authentication.www.DigestAuthenticationEntryPoint">
+        <beans:property name="realmName" value="Contacts Realm via Digest Authentication"/>
+        <beans:property name="key" value="acegi" />
     </beans:bean>
 
     <authentication-manager alias="authenticationManager">
@@ -62,6 +55,5 @@
             <password-encoder hash="plaintext"> </password-encoder>
         </authentication-provider>
     </authentication-manager>
-
 
 </beans:beans>
