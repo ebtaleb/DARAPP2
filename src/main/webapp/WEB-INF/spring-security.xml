@@ -7,6 +7,7 @@
     http://www.springframework.org/schema/security/spring-security.xsd">
 
     <http use-expressions="true">
+        <custom-filter ref="csrfFilter" before="LOGOUT_FILTER" />
         <intercept-url pattern="/app/main**" access="hasRole('ROLE_USER')" />
         <intercept-url pattern="/app/event/**" access="hasRole('ROLE_USER')" />
         <intercept-url pattern="/app/profile**" access="hasRole('ROLE_USER')" />
@@ -20,7 +21,18 @@
             password-parameter="password" />
         <logout logout-success-url="/app/home" delete-cookies="JSESSIONID" invalidate-session="true"/>
         <csrf disabled="true"/>
+        <!--<csrf />-->
     </http>
+
+    <!--<beans:bean id="requestDataValueProcessor" class="org.springframework.security.web.servlet.support.csrf.CsrfRequestDataValueProcessor"/>-->
+
+    <beans:bean id="csrfFilter" class="org.springframework.security.web.csrf.CsrfFilter">
+        <beans:constructor-arg>
+            <beans:bean class="org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository">
+                <beans:property name="headerName" value="X-SECURITY" />
+            </beans:bean>
+        </beans:constructor-arg>
+    </beans:bean>
 
     <!--<http use-expressions="true" entry-point-ref="restAuthEntryPoint">-->
         <!--<intercept-url pattern="/api/**" access="hasRole('ROLE_USER')"/>-->

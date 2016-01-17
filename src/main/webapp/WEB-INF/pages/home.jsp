@@ -43,6 +43,7 @@
                         <div class="form-group">
                             <button type="submit" name="login" class="btn btn-primary">Se connecter</button>
                         </div>
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                     </form>
                 </div>
 
